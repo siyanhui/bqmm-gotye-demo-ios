@@ -293,30 +293,30 @@ span { display: inline-block; }
 </head>
 
 <body class="f9 b9">
-<h1>说明：</h1>
-<ul>
-	<li>
-		<p>
-			本Demo使用的是
-			<a href="https://coding.net/u/Gotye/p/ios.demo/git">亲加2015-10-21发布的版本</a>
-		</p>
-	</li>
-	<li>
-		<p>
-			本Demo在亲加官方Demo的基础上集成了BQMM,在修改的地方我们都加上了“BQMM集成"的注释，可在项目中全局搜索查看
-		</p>
-	</li>
-	<li>
-		<p>
-			我们提供了集成之后的Demo与官方Demo的Diff文档,供大家查看 (绿色为新增的代码，红色为删除的代码)
-		</p>
-	</li>
-</ul>
+  <h1>说明：</h1>
+  <ul>
+  	<li>
+  		<p>
+  			本Demo使用的是
+  			<a href="https://coding.net/u/Gotye/p/ios.demo/git">亲加2015-10-21发布的版本</a>
+  		</p>
+  	</li>
+  	<li>
+  		<p>
+  			本Demo在亲加官方Demo的基础上集成了BQMM,在修改的地方我们都加上了“BQMM集成"的注释，可在项目中全局搜索查看
+  		</p>
+  	</li>
+  	<li>
+  		<p>
+  			我们提供了集成之后的Demo与官方Demo的Diff文档,供大家查看 (绿色为新增的代码，红色为删除的代码)
+  		</p>
+  	</li>
+  </ul>
 
 
-<h1>
-	集成之后的Demo与官方Demo的Diff文档：
-</h1>
+  <h1>
+  	集成之后的Demo与官方Demo的Diff文档：
+  </h1>
 <pre>
 <span class="bold">diff --git a/GotyeIM/GotyeAPI/GotyeOCMessage.h b/GotyeIM/GotyeAPI/GotyeOCMessage.h</span>
 <span class="bold">index 92f99f6..4fb8350 100644</span>
@@ -326,7 +326,7 @@ span { display: inline-block; }
 @property(nonatomic, assign) unsigned date;         ///&lt;  时间(自1970/1/1 00:00:00所经历的毫秒数)
 @property(nonatomic, assign) long long dbID;        ///&lt; 本地数据库id
 @property(nonatomic, copy) NSString* text;          ///&lt; 文本内容
-<span class="f2">//BQMM集成<br/>@property(nonatomic, copy) NSString* extraText;          ///&lt; 附加字段的文本内容</span>
+<span class="f2">@property(nonatomic, copy) NSString* extraText;          ///&lt; 附加字段的文本内容</span>
 
 @property(nonatomic, retain) GotyeOCMedia* media;   ///&lt; 语音/图片/用户自定义数据
 <span class="f2">//BQMM集成  添加消息消息扩展字段</span>
@@ -343,15 +343,17 @@ span { display: inline-block; }
 /**
  * @brief 添加附加数据文件
 <span class="bold">diff --git a/GotyeIM/GotyeAppDelegate.mm b/GotyeIM/GotyeAppDelegate.mm</span>
-<span class="bold">index 18f48f6..456cbb1 100644</span>
+<span class="bold">index 18f48f6..02bb3b8 100644</span>
 <span class="bold">--- a/GotyeIM/GotyeAppDelegate.mm</span>
 <span class="bold">+++ b/GotyeIM/GotyeAppDelegate.mm</span>
-<span class="f6">@@ -12,10 +12,12 @@</span>
+<span class="f6">@@ -12,10 +12,14 @@</span>
 #import &quot;GotyeUIUtil.h&quot;
 #import &quot;GotyeOCAPI.h&quot;
 
 <span class="f2">//BQMM集成  引入头文件</span>
 <span class="f2">#import &lt;BQMM/BQMM.h&gt;</span>
+
+<span class="f2">#import &lt;Bugly/Bugly.h&gt;</span>
 
 #define DEFAULT_APPKEY      (@&quot;<span class="f2">0835b16b-1981-4e56-af09-72ce8aca5c5d&quot;)//*/(@&quot;</span>9c236035-2bf4-40b0-bfbf-e8b6dec54928&quot;)
 
@@ -360,25 +362,28 @@ void set_login_config(const char* server, int port);
 
 @implementation GotyeAppDelegate
 
-<span class="f6">@@ -76,6 +78,9 @@</span> - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(
+<span class="f6">@@ -76,6 +80,12 @@</span> - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(
 #endif
 
     [self.window makeKeyAndVisible];
     <span class="f2">//BQMM集成  初始化BQMM</span>
-<span class="f2">    [[MMEmotionCentre defaultCentre] setAppId:@&quot;YourAppId&quot;</span>
-<span class="f2">                                       secret:@&quot;YourAppSecret&quot;];</span>
+<span class="f2">    [[MMEmotionCentre defaultCentre] setAppId:@&quot;appId&quot;</span>
+<span class="f2">                                       secret:@&quot;appSecret&quot;];</span>
+<span class="f2">    </span>
+<span class="f2">    //初始化bugly</span>
+<span class="f2">    [Bugly startWithAppId:@&quot;900038006&quot;];</span>
 
     return YES;
 }
-<span class="f6">@@ -119,6 +124,7 @@</span> - (void)applicationDidEnterBackground:(UIApplication *)application
+<span class="f6">@@ -119,6 +129,7 @@</span> - (void)applicationDidEnterBackground:(UIApplication *)application
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    <span class="f2">//BQMM集成 <br/>[[MMEmotionCentre defaultCentre] clearSession];</span>
+    <span class="f2">[[MMEmotionCentre defaultCentre] clearSession];</span>
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
-<span class="f6">@@ -126,6 +132,10 @@</span> - (void)applicationDidBecomeActive:(UIApplication *)application
+<span class="f6">@@ -126,6 +137,10 @@</span> - (void)applicationDidBecomeActive:(UIApplication *)application
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 
     self.navController.view.userInteractionEnabled = YES;
@@ -389,37 +394,6 @@ void set_login_config(const char* server, int port);
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
-<span class="bold">diff --git a/GotyeIM/GotyeIM-Info.plist b/GotyeIM/GotyeIM-Info.plist</span>
-<span class="bold">index b85043f..5e40b5f 100644</span>
-<span class="bold">--- a/GotyeIM/GotyeIM-Info.plist</span>
-<span class="bold">+++ b/GotyeIM/GotyeIM-Info.plist</span>
-<span class="f6">@@ -8,8 +8,10 @@</span>
-	&lt;string&gt;${PRODUCT_NAME}&lt;/string&gt;
-	&lt;key&gt;CFBundleExecutable&lt;/key&gt;
-	&lt;string&gt;${EXECUTABLE_NAME}&lt;/string&gt;
-	<span class="f2">&lt;key&gt;CFBundleGetInfoString&lt;/key&gt;</span>
-<span class="f2">	&lt;string&gt;&lt;/string&gt;</span>
-	&lt;key&gt;CFBundleIdentifier&lt;/key&gt;
-	<span class="f1">&lt;string&gt;com.gotye.api.ios.im&lt;/string&gt;</span><span class="f2">&lt;string&gt;$(PRODUCT_BUNDLE_IDENTIFIER)&lt;/string&gt;</span>
-	&lt;key&gt;CFBundleInfoDictionaryVersion&lt;/key&gt;
-	&lt;string&gt;6.0&lt;/string&gt;
-	&lt;key&gt;CFBundleName&lt;/key&gt;
-<span class="f6">@@ -22,8 +24,15 @@</span>
-	&lt;string&gt;????&lt;/string&gt;
-	&lt;key&gt;CFBundleVersion&lt;/key&gt;
-	&lt;string&gt;1.0&lt;/string&gt;
-	<span class="f2">&lt;key&gt;LSApplicationCategoryType&lt;/key&gt;</span>
-<span class="f2">	&lt;string&gt;&lt;/string&gt;</span>
-	&lt;key&gt;LSRequiresIPhoneOS&lt;/key&gt;
-	&lt;true/&gt;
-	<span class="f2">&lt;key&gt;NSAppTransportSecurity&lt;/key&gt;</span>
-<span class="f2">	&lt;dict&gt;</span>
-<span class="f2">		&lt;key&gt;NSAllowsArbitraryLoads&lt;/key&gt;</span>
-<span class="f2">		&lt;true/&gt;</span>
-<span class="f2">	&lt;/dict&gt;</span>
-	&lt;key&gt;UIRequiredDeviceCapabilities&lt;/key&gt;
-	&lt;array&gt;
-		&lt;string&gt;armv7&lt;/string&gt;
 <span class="bold">diff --git a/GotyeIM/UI/ChatView/GotyeChatBubbleView.h b/GotyeIM/UI/ChatView/GotyeChatBubbleView.h</span>
 <span class="bold">index 7952a4b..fead08d 100644</span>
 <span class="bold">--- a/GotyeIM/UI/ChatView/GotyeChatBubbleView.h</span>
@@ -435,7 +409,7 @@ void set_login_config(const char* server, int port);
 
 @end
 <span class="bold">diff --git a/GotyeIM/UI/ChatView/GotyeChatBubbleView.m b/GotyeIM/UI/ChatView/GotyeChatBubbleView.m</span>
-<span class="bold">index 154fe70..ad331c3 100644</span>
+<span class="bold">index 154fe70..e89a102 100644</span>
 <span class="bold">--- a/GotyeIM/UI/ChatView/GotyeChatBubbleView.m</span>
 <span class="bold">+++ b/GotyeIM/UI/ChatView/GotyeChatBubbleView.m</span>
 <span class="f6">@@ -10,6 +10,13 @@</span>
@@ -447,7 +421,7 @@ void set_login_config(const char* server, int port);
 <span class="f2">//BQMM集成  引入头文件</span>
 <span class="f2">#import &lt;BQMM/BQMM.h&gt;</span>
 <span class="f2">#import &quot;MMTextView.h&quot;</span>
-<span class="f2">#import &quot;MMTextParser+ExtData.h&quot;</span>
+<span class="f2">#import &quot;MMTextParser.h&quot;</span>
 
 #define kContentWidthMax    160
 #define kBubbleMinHeight    40
@@ -705,7 +679,7 @@ void set_login_config(const char* server, int port);
 
 @end
 <span class="bold">diff --git a/GotyeIM/UI/ChatView/GotyeChatViewController.m b/GotyeIM/UI/ChatView/GotyeChatViewController.m</span>
-<span class="bold">index 01a5226..9c46d50 100644</span>
+<span class="bold">index 01a5226..d78a01e 100644</span>
 <span class="bold">--- a/GotyeIM/UI/ChatView/GotyeChatViewController.m</span>
 <span class="bold">+++ b/GotyeIM/UI/ChatView/GotyeChatViewController.m</span>
 <span class="f6">@@ -21,12 +21,20 @@</span>
@@ -716,7 +690,7 @@ void set_login_config(const char* server, int port);
 
 <span class="f2">//BQMM集成  添加头文件</span>
 <span class="f2">#import &lt;BQMM/BQMM.h&gt;</span>
-<span class="f2">#import &quot;MMTextParser+ExtData.h&quot;</span>
+<span class="f2">#import &quot;MMTextParser.h&quot;</span>
 <span class="f2">#import &quot;JSON.h&quot;</span>
 
 #define BD_API_KEY @&quot;oKUHg75KeH787zPesCSEAGPw&quot;
@@ -809,7 +783,7 @@ static GotyeChatViewController *chatViewRetainForBDVR = nil;
 
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(exitChatProcesses) name:popToRootViewControllerNotification object:nil];
     }
-<span class="f6">@@ -186,103 +211,141 @@</span> - (void)exitChatProcesses
+<span class="f6">@@ -186,103 +211,128 @@</span> - (void)exitChatProcesses
 
     [GotyeOCAPI stopTalk];
 
@@ -849,33 +823,35 @@ static GotyeChatViewController *chatViewRetainForBDVR = nil;
 
 - (void)<span class="f1">moveTextViewForKeyBoard</span><span class="f2">keyboardWillHidden</span>:(NSNotification*)notify<span class="f1">up:(BOOL)up</span>
 {
-    NSDictionary *userInfo =<span class="f1">[</span> notify<span class="f2">.</span>userInfo<span class="f1">]</span>;
-    <span class="f1">// Get animation info from userInfo</span>
-<span class="f1">    NSTimeInterval animationDuration;</span>
-<span class="f1">    UIViewAnimationCurve animationCurve;</span>
+    NSDictionary *userInfo =<span class="f1">[</span> notify<span class="f2">.</span>userInfo<span class="f1">];</span>
+<span class="f1">    </span>
+<span class="f1">    // Get animation info from userInfo</span>
+<span class="f1">    NSTimeInterval animationDuration</span>;
+    <span class="f1">UIViewAnimationCurve animationCurve;</span>
 <span class="f1">    </span>
 <span class="f1">    CGRect keyboardEndFrame;</span>
 <span class="f1">    </span>
-<span class="f1">    [</span><span class="f2">CGFloat duration =</span> [userInfo<span class="f1">objectForKey:UIKeyboardAnimationCurveUserInfoKey</span><span class="f2">[UIKeyboardAnimationDurationUserInfoKey</span>] <span class="f1">getValue:&amp;animationCurve</span><span class="f2">doubleValue</span>];
-    <span class="f1">[</span><span class="f2">UIViewAnimationCurve curve =</span> [userInfo<span class="f1">objectForKey:UIKeyboardAnimationDurationUserInfoKey</span><span class="f2">[UIKeyboardAnimationCurveUserInfoKey</span>] <span class="f1">getValue:&amp;animationDuration</span><span class="f2">integerValue</span>];
+<span class="f1">    [</span><span class="f2">CGFloat duration =</span> [userInfo<span class="f1">objectForKey:UIKeyboardAnimationCurveUserInfoKey] getValue:&amp;animationCurve];</span>[<span class="f1">[userInfo objectForKey:</span>UIKeyboardAnimationDurationUserInfoKey] <span class="f1">getValue:&amp;animationDuration</span><span class="f2">doubleValue</span>];
+    <span class="f1">[[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&amp;keyboardEndFrame];</span>
+<span class="f1">    </span>
+<span class="f1">    keyboardHeight</span><span class="f2">UIViewAnimationCurve curve</span> =<span class="f1">keyboardEndFrame.size.height;</span>
+<span class="f1">    </span>
+<span class="f1">    if(animationDuration &gt; 0)</span>
+<span class="f1">    {</span>
+<span class="f1">        // Animate up or down</span> [<span class="f1">UIView beginAnimations:@&quot;contentMove&quot; context:nil];</span>
+<span class="f1">        [UIView setAnimationDuration:animationDuration];</span><span class="f2">userInfo</span>[<span class="f1">UIView setAnimationCurve:animationCurve</span><span class="f2">UIKeyboardAnimationCurveUserInfoKey</span>] <span class="f1">;</span>
+<span class="f1">        [UIView setAnimationBeginsFromCurrentState:YES</span><span class="f2">integerValue</span>];<span class="f1">}</span>
 
-    <span class="f1">[[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&amp;keyboardEndFrame]</span><span class="f2">void(^animations)() = ^{</span>
+    <span class="f1">CGRect newFrame</span><span class="f2">void(^animations)()</span> = <span class="f1">chatView.frame</span><span class="f2">^{</span>
 <span class="f2">        inputViewBottomLayout.constant = -100;</span>
 <span class="f2">    }</span>;
 
-    <span class="f1">keyboardHeight</span><span class="f2">void(^completion)(BOOL)</span> = <span class="f1">keyboardEndFrame.size.height;</span><span class="f2">^(BOOL finished){</span>
-        if (<span class="f1">animationDuration</span><span class="f2">messageList.count</span> &gt; 0) {<span class="f1">// Animate up or down</span>
-            [<span class="f1">UIView beginAnimations:@&quot;contentMove&quot; context</span><span class="f2">tableView scrollToRowAtIndexPath</span>:<span class="f1">nil];</span>[<span class="f1">UIView setAnimationDuration</span><span class="f2">NSIndexPath indexPathForItem</span>:<span class="f1">animationDuration];</span>
-<span class="f1">        [UIView setAnimationCurve</span><span class="f2">messageList.count-1 inSection</span>:<span class="f1">animationCurve</span><span class="f2">0</span>] <span class="f1">;</span>
-<span class="f1">        [UIView setAnimationBeginsFromCurrentState</span><span class="f2">atScrollPosition:UITableViewScrollPositionBottom animated</span>:YES];
-        }<span class="f1">CGRect newFrame = chatView.frame;</span>
-<span class="f1">    </span>
-<span class="f1">    if(!up)</span>
-<span class="f1">        newFrame.origin.y = chatViewOriginY;</span>
-<span class="f1">    else</span>
-<span class="f1">    {</span>
-<span class="f1">        newFrame.origin.y = self.view.frame.size.height - keyboardHeight - 50;</span>
-    }<span class="f1">chatView.frame = newFrame</span>;
+    <span class="f1">if</span><span class="f2">void</span>(<span class="f1">!up</span><span class="f2">^completion)(BOOL</span>)<span class="f1">newFrame.origin.y</span> = <span class="f1">chatViewOriginY;</span>
+<span class="f1">    else</span><span class="f2">^(BOOL finished)</span>{
+        <span class="f1">newFrame.origin.y = self.view.frame</span><span class="f2">if (messageList</span>.<span class="f1">size</span><span class="f2">count &gt; 0) {</span>
+<span class="f2">            [tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForItem:messageList</span>.<span class="f1">height - keyboardHeight - 50</span><span class="f2">count-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES]</span>;
+        }
+    <span class="f1">chatView.frame = newFrame</span><span class="f2">}</span>;
 
 <span class="f1">if(animationDuration &gt; 0)</span>
 <span class="f1">    {</span>    [UIView <span class="f1">commitAnimations</span><span class="f2">animateWithDuration:duration delay:0.0f options:(curve &lt;&lt; 16 | UIViewAnimationOptionBeginFromCurrentState) animations:animations completion:completion</span>];<span class="f1">}</span>
@@ -889,38 +865,25 @@ static GotyeChatViewController *chatViewRetainForBDVR = nil;
 }
 
 <span class="f2">//BQMM集成  发送消息及按钮事件相关 开始   请对比所有的方法，做出修改</span>
-- (<span class="f1">IBAction</span><span class="f2">void</span>)<span class="f1">sendClick</span><span class="f2">sendTextMessage</span>:(<span class="f1">UITextField</span><span class="f2">NSString</span>*)<span class="f1">sender</span><span class="f2">textMessage</span>
+- (<span class="f1">IBAction</span><span class="f2">void</span>)<span class="f1">sendClick</span><span class="f2">SendTextMessageWithTextView</span>:(<span class="f1">UITextField</span><span class="f2">UITextView</span> *)<span class="f1">sender</span><span class="f2">textView</span>
 {
-    <span class="f2">NSString *textMessage_ =</span> [<span class="f1">sender resignFirstResponder</span><span class="f2">textMessage stringByReplacingOccurrencesOfString:@&quot;\a&quot; withString:@&quot;&quot;</span>];
-    <span class="f2">[MMTextParser localParseMMText:textMessage_ completionHandler:^(NSArray *textImgArray) {</span>
-<span class="f2">        NSDictionary *ext = nil;</span>
-<span class="f2">        NSString *sendStr = @&quot;&quot;;</span>
-<span class="f2">        for (id obj in textImgArray) {</span>
-            if (<span class="f1">sender.</span><span class="f2">[obj isKindOfClass:[MMEmoji class]]) {</span>
-<span class="f2">                MMEmoji *emoji = (MMEmoji*)obj;</span>
-<span class="f2">                if (!ext) {</span>
-<span class="f2">                    ext = @{@&quot;txt_msgType&quot;:@&quot;emojitype&quot;,</span>
+    <span class="f2">NSString *sendStr = textView.characterMMText;</span>
+<span class="f2">    NSArray *textImgArray = textView.textImgArray;</span>
+<span class="f2">    NSDictionary *mmExt = @{@&quot;txt_msgType&quot;:@&quot;emojitype&quot;,</span>
 <span class="f2">                            @&quot;msg_data&quot;:[MMTextParser extDataWithTextImageArray:textImgArray]};</span>
-<span class="f2">                }</span>
-<span class="f2">                sendStr = [sendStr stringByAppendingString:[NSString stringWithFormat:@&quot;[%@]&quot;, emoji.emojiName]];</span>
-<span class="f2">            }</span>
-<span class="f2">            else if ([obj isKindOfClass:[NSString class]]) {</span>
-<span class="f2">                sendStr = [sendStr stringByAppendingString:obj];</span>
-<span class="f2">            }</span>
-<span class="f2">        }</span>
-<span class="f2">        </span>
-<span class="f2">        GotyeOCMessage* msg = [GotyeOCMessage createTextMessage:chatTarget</span> text<span class="f1">.length &lt;=0</span><span class="f2">:textMessage];</span>
-<span class="f2">        if (ext) {</span>
-<span class="f2">            const char *extStr = [ext JSONRepresentation].UTF8String;</span>
-<span class="f2">            [msg putExtraData:extStr len:(unsigned int)strlen(extStr)];</span>
-<span class="f2">        }</span>
-<span class="f2">        [GotyeOCAPI sendMessage:msg];</span>
-<span class="f2">        </span>
-<span class="f2">        [self reloadHistorys:YES];</span>
-<span class="f2">    }];</span>
+<span class="f2">    </span>
+<span class="f2">    GotyeOCMessage* msg = [GotyeOCMessage createTextMessage:chatTarget text:sendStr];</span>
+<span class="f2">    if (mmExt) {</span>
+<span class="f2">        const char *extStr = [mmExt JSONRepresentation].UTF8String;</span>
+<span class="f2">        [msg putExtraData:extStr len:(unsigned int)strlen(extStr)];</span>
+<span class="f2">    }</span>
+    [<span class="f1">sender resignFirstResponder</span><span class="f2">GotyeOCAPI sendMessage:msg</span>];
+
+    <span class="f1">if</span><span class="f2">[self reloadHistorys:YES];</span>
 <span class="f2">}</span>
 
-<span class="f2">- (void)sendMMFaceMesage:(MMEmoji*</span>)<span class="f1">return</span><span class="f2">emoji</span>
+
+<span class="f2">-</span> (<span class="f1">sender.text.length &lt;=0</span><span class="f2">void)sendMMFaceMesage:(MMEmoji*</span>)<span class="f1">return</span><span class="f2">emoji</span>
 <span class="f2">{</span>
 <span class="f2">    NSDictionary *ext = @{@&quot;txt_msgType&quot;:@&quot;facetype&quot;,</span>
 <span class="f2">                          @&quot;msg_data&quot;:[MMTextParser extDataWithEmoji:emoji]};</span>
@@ -972,7 +935,7 @@ static GotyeChatViewController *chatViewRetainForBDVR = nil;
 }
 
 - (IBAction)writeButtonClick:(id)sender
-<span class="f6">@@ -292,31 +355,52 @@</span> - (IBAction)writeButtonClick:(id)sender
+<span class="f6">@@ -292,31 +342,52 @@</span> - (IBAction)writeButtonClick:(id)sender
 
     buttonWrite.alpha = 0;
     buttonVoice.alpha = 1;
@@ -1003,13 +966,13 @@ static GotyeChatViewController *chatViewRetainForBDVR = nil;
 
     <span class="f2">void(^completion)(BOOL) = ^(BOOL finished){</span>
 <span class="f2">        if (messageList.count &gt; 0) {</span>
-            [<span class="f1">UIView commitAnimations</span><span class="f2">tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForItem:messageList.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];</span>
+<span class="f2">            [tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForItem:messageList.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];</span>
 <span class="f2">        }</span>
-<span class="f2">        buttonRealTime.hidden = ![GotyeOCAPI supportRealtime:chatTarget</span>];
-        <span class="f2">[textInput resignFirstResponder];</span>
+<span class="f2">        buttonRealTime.hidden = ![GotyeOCAPI supportRealtime:chatTarget];</span>
+<span class="f2">        [textInput resignFirstResponder];</span>
 <span class="f2">    };</span>
 
-<span class="f1">buttonRealTime.hidden = !</span>    [<span class="f1">GotyeOCAPI supportRealtime</span><span class="f2">UIView animateWithDuration:0.2f delay</span>:<span class="f1">chatTarget</span><span class="f2">0.0f options:(UIViewAnimationCurveLinear &lt;&lt; 16 | UIViewAnimationOptionBeginFromCurrentState) animations:animations completion:completion</span>];
+    [UIView <span class="f1">commitAnimations</span><span class="f2">animateWithDuration:0.2f delay:0.0f options:(UIViewAnimationCurveLinear &lt;&lt; 16 | UIViewAnimationOptionBeginFromCurrentState) animations:animations completion:completion</span>];
 <span class="f2">}</span>
 
 <span class="f2">- (IBAction)faceButtonClick:(id)sender</span>
@@ -1017,19 +980,19 @@ static GotyeChatViewController *chatViewRetainForBDVR = nil;
 <span class="f2">    UIButton *button = (UIButton *)sender;</span>
 <span class="f2">    button.selected = !button.selected;</span>
 
-    <span class="f2">if (!</span>[textInput <span class="f1">resignFirstResponder</span><span class="f2">isFirstResponder]) {</span>
-<span class="f2">        [textInput becomeFirstResponder];</span>
-<span class="f2">    }</span>
-<span class="f2">    </span>
-<span class="f2">    if (button.isSelected) {</span>
-<span class="f2">        [[MMEmotionCentre defaultCentre] attachEmotionKeyboardToInput:textInput];</span>
-<span class="f2">    } else {</span>
-<span class="f2">        [[MMEmotionCentre defaultCentre] switchToDefaultKeyboard</span>];
+    <span class="f1">buttonRealTime.hidden =</span><span class="f2">if (</span>![<span class="f1">GotyeOCAPI supportRealtime:chatTarget</span><span class="f2">textInput isFirstResponder]) {</span>
+<span class="f2">        [textInput becomeFirstResponder</span>];
     <span class="f2">}</span>
+
+    <span class="f2">if (button.isSelected) {</span>
+        [<span class="f2">[MMEmotionCentre defaultCentre] attachEmotionKeyboardToInput:</span>textInput<span class="f1">resignFirstResponder</span>];
+    <span class="f2">} else {</span>
+<span class="f2">        [[MMEmotionCentre defaultCentre] switchToDefaultKeyboard];</span>
+<span class="f2">    }</span>
 }
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-<span class="f6">@@ -350,6 +434,9 @@</span> - (IBAction)cameraButtonClick:(id)sender
+<span class="f6">@@ -350,6 +421,9 @@</span> - (IBAction)cameraButtonClick:(id)sender
 {
     if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
     {
@@ -1039,7 +1002,7 @@ static GotyeChatViewController *chatViewRetainForBDVR = nil;
         UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
 
         imagePicker.delegate = self;
-<span class="f6">@@ -367,8 +454,28 @@</span> - (IBAction)realtimeClick:(id)sender
+<span class="f6">@@ -367,8 +441,28 @@</span> - (IBAction)realtimeClick:(id)sender
 {
     if(chatTarget.type == GotyeChatTargetTypeRoom &amp;&amp; [GotyeOCAPI supportRealtime:chatTarget])
     {
@@ -1068,7 +1031,7 @@ static GotyeChatViewController *chatViewRetainForBDVR = nil;
     }
 }
 
-<span class="f6">@@ -381,8 +488,6 @@</span> -(IBAction)speakButtonDown:(id)sender
+<span class="f6">@@ -381,8 +475,6 @@</span> -(IBAction)speakButtonDown:(id)sender
     {
         speakingView.hidden = NO;
     }
@@ -1077,7 +1040,7 @@ static GotyeChatViewController *chatViewRetainForBDVR = nil;
 }
 
 -(IBAction)speakButtonUp:(id)sender
-<span class="f6">@@ -392,8 +497,6 @@</span> -(IBAction)speakButtonUp:(id)sender
+<span class="f6">@@ -392,8 +484,6 @@</span> -(IBAction)speakButtonUp:(id)sender
     [self reloadHistorys:YES];
 
     speakingView.hidden = YES;
@@ -1086,7 +1049,7 @@ static GotyeChatViewController *chatViewRetainForBDVR = nil;
 }
 
 -(void)messageClick:(UIButton*)button
-<span class="f6">@@ -403,6 +506,18 @@</span> -(void)messageClick:(UIButton*)button
+<span class="f6">@@ -403,6 +493,18 @@</span> -(void)messageClick:(UIButton*)button
     GotyeOCMessage* message = messageList[indexPath.row];
 
     switch (message.type) {
@@ -1105,7 +1068,7 @@ static GotyeChatViewController *chatViewRetainForBDVR = nil;
         case GotyeMessageTypeAudio:
         {
             if(talkingUserID != nil)
-<span class="f6">@@ -530,18 +645,21 @@</span> - (void)largeImageClose:(id)sender
+<span class="f6">@@ -530,18 +632,21 @@</span> - (void)largeImageClose:(id)sender
 - (void)groupSettingClick:(id)sender
 {
     GotyeGroupSettingController *viewController = [[GotyeGroupSettingController alloc] initWithTarget:[GotyeOCAPI getGroupDetail:chatTarget forceRequest:NO]];
@@ -1127,7 +1090,7 @@ static GotyeChatViewController *chatViewRetainForBDVR = nil;
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
-<span class="f6">@@ -550,14 +668,18 @@</span> - (void)userClick:(UIButton*)sender
+<span class="f6">@@ -550,14 +655,18 @@</span> - (void)userClick:(UIButton*)sender
     GotyeOCMessage* message = messageList[sender.tag];
 
     GotyeUserInfoController *viewController = [[GotyeUserInfoController alloc] initWithTarget:[GotyeOCAPI getUserDetail:message.sender forceRequest:NO] groupID:0];
@@ -1146,7 +1109,7 @@ static GotyeChatViewController *chatViewRetainForBDVR = nil;
         [scrollView insertSubview:loadingView atIndex:0];
         loadingView.hidden = NO;
         [loadingView showLoading:haveMoreData];
-<span class="f6">@@ -566,11 +688,15 @@</span> - (void)scrollViewDidScroll:(UIScrollView *)scrollView
+<span class="f6">@@ -566,11 +675,15 @@</span> - (void)scrollViewDidScroll:(UIScrollView *)scrollView
         {
             NSInteger lastCount = messageList.count;
             messageList = [GotyeOCAPI getMessageList:chatTarget more:YES];
@@ -1162,7 +1125,7 @@ static GotyeChatViewController *chatViewRetainForBDVR = nil;
                     [loadingView showLoading:haveMoreData];
                 }
                 else
-<span class="f6">@@ -580,22 +706,69 @@</span> - (void)scrollViewDidScroll:(UIScrollView *)scrollView
+<span class="f6">@@ -580,22 +693,62 @@</span> - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 
                     loadingView.hidden = YES;
                     [self reloadHistorys:NO];
@@ -1187,12 +1150,10 @@ static GotyeChatViewController *chatViewRetainForBDVR = nil;
 <span class="f2">- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text</span>
 <span class="f2">{</span>
 <span class="f2">    if ([text isEqualToString:@&quot;\n&quot;]) {</span>
-<span class="f2">        [textView resignFirstResponder];</span>
-<span class="f2">        </span>
 <span class="f2">        if(textView.text.length &lt;= 0)</span>
 <span class="f2">            return NO;</span>
 <span class="f2">        </span>
-<span class="f2">        [self sendTextMessage:textView.mmText];</span>
+<span class="f2">        [self SendTextMessageWithTextView:textView];</span>
 <span class="f2">        </span>
 <span class="f2">        textView.text = @&quot;&quot;;</span>
 <span class="f2">        </span>
@@ -1203,11 +1164,6 @@ static GotyeChatViewController *chatViewRetainForBDVR = nil;
 
 <span class="f2">- (void)textViewDidChange:(UITextView *)textView</span>
 <span class="f2">{</span>
-<span class="f2">    if (textView.markedTextRange == nil) {</span>
-<span class="f2">        NSRange selectedRange = textView.selectedRange;</span>
-<span class="f2">        textView.mmText = textView.mmText;</span>
-<span class="f2">        textView.selectedRange = selectedRange;</span>
-<span class="f2">    }</span>
 <span class="f2">}</span>
 
 <span class="f2">- (void)textViewDidBeginEditing:(UITextView *)textView</span>
@@ -1232,7 +1188,7 @@ static GotyeChatViewController *chatViewRetainForBDVR = nil;
     [self reloadHistorys:YES];
 
     if(message.type == GotyeMessageTypeImage)
-<span class="f6">@@ -627,7 +800,9 @@</span> - (void)onGetMessageList:(GotyeStatusCode)code msglist:(NSArray *)msgList downlo
+<span class="f6">@@ -627,7 +780,9 @@</span> - (void)onGetMessageList:(GotyeStatusCode)code msglist:(NSArray *)msgList downlo
 //    }
 
      *downloadMediaIfNeed = true;
@@ -1242,7 +1198,7 @@ static GotyeChatViewController *chatViewRetainForBDVR = nil;
     loadingView.hidden = YES;
     haveMoreData = (msgList.count &gt; 0);
 }
-<span class="f6">@@ -646,6 +821,30 @@</span> - (void)onUserDismissGroup:(GotyeOCGroup*)group user:(GotyeOCUser*)user
+<span class="f6">@@ -646,6 +801,30 @@</span> - (void)onUserDismissGroup:(GotyeOCGroup*)group user:(GotyeOCUser*)user
     }
 }
 
@@ -1273,7 +1229,7 @@ static GotyeChatViewController *chatViewRetainForBDVR = nil;
 - (void)onPlayStop
 {
     for(UITableViewCell* cell in self.tableView.visibleCells)
-<span class="f6">@@ -667,6 +866,8 @@</span> - (void)onRealPlayStart:(GotyeStatusCode)code speaker:(GotyeOCUser*)speaker room
+<span class="f6">@@ -667,6 +846,8 @@</span> - (void)onRealPlayStart:(GotyeStatusCode)code speaker:(GotyeOCUser*)speaker room
     labelRealTimeStart.text = [NSString stringWithFormat:@&quot;%@发起了实时对讲&quot;, talkingUserID];
 
     [self.view addSubview:realtimeStartView];
@@ -1282,7 +1238,7 @@ static GotyeChatViewController *chatViewRetainForBDVR = nil;
 }
 
 - (void)onStopTalk:(GotyeStatusCode)code realtime:(bool)realtime message:(GotyeOCMessage*)message cancelSending:(bool *)cancelSending
-<span class="f6">@@ -680,16 +881,20 @@</span> - (void)onStopTalk:(GotyeStatusCode)code realtime:(bool)realtime message:(GotyeO
+<span class="f6">@@ -680,16 +861,20 @@</span> - (void)onStopTalk:(GotyeStatusCode)code realtime:(bool)realtime message:(GotyeO
                                               otherButtonTitles:nil, nil];
         [alert show];
     }
@@ -1305,7 +1261,7 @@ static GotyeChatViewController *chatViewRetainForBDVR = nil;
     //[GotyeOCAPI decodeAudioMessage:message];
 }
 
-<span class="f6">@@ -834,6 +1039,14 @@</span> - (void)VoiceRecognitionClientErrorStatus:(int) aStatus subStatus:(int)aSubStatu
+<span class="f6">@@ -834,6 +1019,14 @@</span> - (void)VoiceRecognitionClientErrorStatus:(int) aStatus subStatus:(int)aSubStatu
     decodingMessage = nil;
 }
 */
@@ -1320,7 +1276,7 @@ static GotyeChatViewController *chatViewRetainForBDVR = nil;
 #pragma mark - table delegate &amp; data
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-<span class="f6">@@ -855,17 +1068,18 @@</span> - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPa
+<span class="f6">@@ -855,17 +1048,18 @@</span> - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPa
             showDate = YES;
     }
 
@@ -1339,7 +1295,7 @@ static GotyeChatViewController *chatViewRetainForBDVR = nil;
     }
 
     for (UIView *view in [cell.contentView subviews]) {
-<span class="f6">@@ -884,7 +1098,7 @@</span> - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(N
+<span class="f6">@@ -884,7 +1078,7 @@</span> - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(N
             showDate = YES;
     }
 
@@ -1347,7 +1303,7 @@ static GotyeChatViewController *chatViewRetainForBDVR = nil;
 
     UIButton *msgButton = (UIButton *)[(UIButton*)bubble viewWithTag:bubbleMessageButtonTag];
     msgButton.tag = indexPath.row;
-<span class="f6">@@ -904,12 +1118,126 @@</span> - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(N
+<span class="f6">@@ -904,12 +1098,126 @@</span> - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(N
 
     cell.backgroundColor = [UIColor clearColor];
 
@@ -1437,16 +1393,16 @@ static GotyeChatViewController *chatViewRetainForBDVR = nil;
 
 <span class="f2">- (void)didSendWithInput:(UIResponder&lt;UITextInput&gt; *)input</span>
 <span class="f2">{</span>
-<span class="f2">    UITextView *inputTextView = (UITextView *)input;</span>
-<span class="f2">    </span>
-<span class="f2">    [inputTextView resignFirstResponder];</span>
-<span class="f2">    </span>
-<span class="f2">    if(inputTextView.text.length &lt;= 0)</span>
-<span class="f2">        return;</span>
-<span class="f2">    </span>
-<span class="f2">    [self sendTextMessage:inputTextView.mmText];</span>
-<span class="f2">    </span>
-<span class="f2">    inputTextView.text = @&quot;&quot;;</span>
+<span class="f2">    if ([input isKindOfClass:[UITextView class]]) {</span>
+<span class="f2">        UITextView *textView = (UITextView *)input;</span>
+<span class="f2">        NSString *sendStr = textView.characterMMText;</span>
+<span class="f2">        sendStr = [sendStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];</span>
+<span class="f2">        if (![sendStr isEqualToString:@&quot;&quot;]) {</span>
+<span class="f2">            </span>
+<span class="f2">            [self SendTextMessageWithTextView:textView];</span>
+<span class="f2">            textInput.text = @&quot;&quot;;</span>
+<span class="f2">        }</span>
+<span class="f2">    }</span>
 <span class="f2">}</span>
 
 <span class="f2">- (void)tapOverlay</span>
@@ -1457,6 +1413,457 @@ static GotyeChatViewController *chatViewRetainForBDVR = nil;
 @end
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="bold">diff --git a/GotyeIM/UI/ChatView/GotyeChatViewController.xib b/GotyeIM/UI/ChatView/GotyeChatViewController.xib</span>
+<span class="bold">index 3ccc76f..fe76a6b 100644</span>
+<span class="bold">--- a/GotyeIM/UI/ChatView/GotyeChatViewController.xib</span>
+<span class="bold">+++ b/GotyeIM/UI/ChatView/GotyeChatViewController.xib</span>
+<span class="f6">@@ -1,23 +1,26 @@</span>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;
+&lt;document type=&quot;com.apple.InterfaceBuilder3.CocoaTouch.XIB&quot; version=&quot;3.0&quot; <span class="f1">toolsVersion=&quot;6254&quot; systemVersion=&quot;14D136&quot;</span><span class="f2">toolsVersion=&quot;9532&quot; systemVersion=&quot;15D21&quot;</span> targetRuntime=&quot;iOS.CocoaTouch&quot; <span class="f1">propertyAccessControl=&quot;none&quot;&gt;</span><span class="f2">propertyAccessControl=&quot;none&quot; useAutolayout=&quot;YES&quot;&gt;</span>
+    &lt;dependencies&gt;
+        &lt;deployment identifier=&quot;iOS&quot;/&gt;
+        &lt;plugIn identifier=&quot;com.apple.InterfaceBuilder.IBCocoaTouchPlugin&quot; <span class="f1">version=&quot;6247&quot;/&gt;</span><span class="f2">version=&quot;9530&quot;/&gt;</span>
+    &lt;/dependencies&gt;
+    &lt;objects&gt;
+        &lt;placeholder placeholderIdentifier=&quot;IBFilesOwner&quot; id=&quot;-1&quot; userLabel=&quot;File's Owner&quot; customClass=&quot;GotyeChatViewController&quot;&gt;
+            &lt;connections&gt;
+                <span class="f2">&lt;outlet property=&quot;buttonAdd&quot; destination=&quot;hIO-j6-Pag&quot; id=&quot;6Cz-OR-xQY&quot;/&gt;</span>
+<span class="f2">                &lt;outlet property=&quot;buttonFace&quot; destination=&quot;eo7-rA-PbP&quot; id=&quot;r25-GO-Jbd&quot;/&gt;</span>
+                &lt;outlet property=&quot;buttonRealTime&quot; destination=&quot;Azu-nt-8pe&quot; id=&quot;KPW-Ss-dr1&quot;/&gt;
+                &lt;outlet property=&quot;buttonSpeak&quot; destination=&quot;Iwm-nk-f2y&quot; id=&quot;azE-6j-GaS&quot;/&gt;
+                &lt;outlet property=&quot;buttonVoice&quot; destination=&quot;bGh-5a-nw2&quot; id=&quot;gNv-KU-q7c&quot;/&gt;
+                &lt;outlet property=&quot;buttonWrite&quot; destination=&quot;V4x-fy-5Np&quot; id=&quot;cRJ-eX-nk8&quot;/&gt;
+                &lt;outlet property=&quot;chatView&quot; destination=&quot;zKB-XH-MSL&quot; id=&quot;Tj1-kD-gkx&quot;/&gt;
+                &lt;outlet property=&quot;inputView&quot; destination=&quot;kdh-Ba-MD2&quot; id=&quot;FZv-pg-n3x&quot;/&gt;
+                <span class="f2">&lt;outlet property=&quot;inputViewBottomLayout&quot; destination=&quot;UtL-Al-PAq&quot; id=&quot;hFD-Tc-XRV&quot;/&gt;</span>
+                &lt;outlet property=&quot;labelRealTimeStart&quot; destination=&quot;RlY-sc-aUB&quot; id=&quot;spl-qi-gjJ&quot;/&gt;
+                &lt;outlet property=&quot;realtimeStartView&quot; destination=&quot;XDx-an-fMj&quot; id=&quot;NMJ-3o-nA0&quot;/&gt;
+                &lt;outlet property=&quot;speakingView&quot; destination=&quot;5Rr-GG-Zm0&quot; id=&quot;EdV-kL-sgv&quot;/&gt;
+                &lt;outlet property=&quot;tableView&quot; destination=&quot;LsY-SL-Xyj&quot; id=&quot;Ign-X4-UGZ&quot;/&gt;
+                &lt;outlet property=&quot;textInput&quot; <span class="f1">destination=&quot;lbF-KG-6J7&quot; id=&quot;2aw-L8-myu&quot;/&gt;</span><span class="f2">destination=&quot;quI-yE-8aI&quot; id=&quot;C0e-0l-ZOw&quot;/&gt;</span>
+                &lt;outlet property=&quot;view&quot; destination=&quot;i5M-Pr-FkT&quot; id=&quot;sfx-zR-JGt&quot;/&gt;
+            &lt;/connections&gt;
+        &lt;/placeholder&gt;
+<span class="f6">@@ -26,187 +29,289 @@</span>
+            &lt;rect key=&quot;frame&quot; x=&quot;0.0&quot; y=&quot;0.0&quot; width=&quot;320&quot; height=&quot;568&quot;/&gt;
+            &lt;autoresizingMask key=&quot;autoresizingMask&quot; widthSizable=&quot;YES&quot; heightSizable=&quot;YES&quot;/&gt;
+            &lt;subviews&gt;
+                &lt;tableView clipsSubviews=&quot;YES&quot; contentMode=&quot;scaleToFill&quot; alwaysBounceVertical=&quot;YES&quot; style=&quot;plain&quot; separatorStyle=&quot;none&quot; rowHeight=&quot;44&quot; sectionHeaderHeight=&quot;22&quot; sectionFooterHeight=&quot;22&quot; <span class="f2">translatesAutoresizingMaskIntoConstraints=&quot;NO&quot;</span> id=&quot;LsY-SL-Xyj&quot;&gt;
+                    &lt;rect key=&quot;frame&quot; x=&quot;0.0&quot; y=&quot;0.0&quot; width=&quot;320&quot; <span class="f1">height=&quot;568&quot;/&gt;</span>
+<span class="f1">                    &lt;autoresizingMask key=&quot;autoresizingMask&quot; widthSizable=&quot;YES&quot; heightSizable=&quot;YES&quot;/&gt;</span><span class="f2">height=&quot;518&quot;/&gt;</span>
+                    &lt;color key=&quot;backgroundColor&quot; red=&quot;0.93333333330000001&quot; green=&quot;0.93333333330000001&quot; blue=&quot;0.93333333330000001&quot; alpha=&quot;1&quot; colorSpace=&quot;calibratedRGB&quot;/&gt;
+                    &lt;connections&gt;
+                        &lt;outlet property=&quot;dataSource&quot; destination=&quot;-1&quot; id=&quot;JVN-df-iKW&quot;/&gt;
+                        &lt;outlet property=&quot;delegate&quot; destination=&quot;-1&quot; id=&quot;9xT-Qv-oRe&quot;/&gt;
+                    &lt;/connections&gt;
+                &lt;/tableView&gt;
+                &lt;view <span class="f2">hidden=&quot;YES&quot;</span> contentMode=&quot;scaleToFill&quot; <span class="f2">translatesAutoresizingMaskIntoConstraints=&quot;NO&quot; id=&quot;XDx-an-fMj&quot;&gt;</span>
+<span class="f2">                    &lt;rect key=&quot;frame&quot; x=&quot;0.0&quot; y=&quot;0.0&quot; width=&quot;320&quot; height=&quot;37&quot;/&gt;</span>
+<span class="f2">                    &lt;subviews&gt;</span>
+<span class="f2">                        &lt;label opaque=&quot;NO&quot; clipsSubviews=&quot;YES&quot; userInteractionEnabled=&quot;NO&quot; contentMode=&quot;left&quot; horizontalHuggingPriority=&quot;251&quot; verticalHuggingPriority=&quot;251&quot; text=&quot;Label&quot; textAlignment=&quot;center&quot; lineBreakMode=&quot;tailTruncation&quot; baselineAdjustment=&quot;alignBaselines&quot; adjustsFontSizeToFit=&quot;NO&quot; translatesAutoresizingMaskIntoConstraints=&quot;NO&quot; id=&quot;RlY-sc-aUB&quot;&gt;
+                            &lt;rect key=&quot;frame&quot; x=&quot;29&quot; y=&quot;8&quot; width=&quot;262&quot; height=&quot;21&quot;/&gt;</span>
+<span class="f2">                            &lt;fontDescription key=&quot;fontDescription&quot; type=&quot;system&quot; pointSize=&quot;17&quot;/&gt;</span>
+<span class="f2">                            &lt;color key=&quot;textColor&quot; red=&quot;1&quot; green=&quot;1&quot; blue=&quot;1&quot; alpha=&quot;1&quot; colorSpace=&quot;custom&quot; customColorSpace=&quot;calibratedRGB&quot;/&gt;</span>
+<span class="f2">                            &lt;nil key=&quot;highlightedColor&quot;/&gt;</span>
+<span class="f2">                        &lt;/label&gt;</span>
+<span class="f2">                        &lt;imageView userInteractionEnabled=&quot;NO&quot; contentMode=&quot;scaleToFill&quot; horizontalHuggingPriority=&quot;251&quot; verticalHuggingPriority=&quot;251&quot; image=&quot;chat_realtime_arrow&quot; translatesAutoresizingMaskIntoConstraints=&quot;NO&quot; id=&quot;jU4-S5-AwC&quot;&gt;</span>
+<span class="f2">                            &lt;rect key=&quot;frame&quot; x=&quot;299&quot; y=&quot;10&quot; width=&quot;12&quot; height=&quot;18&quot;/&gt;</span>
+<span class="f2">                            &lt;constraints&gt;</span>
+<span class="f2">                                &lt;constraint firstAttribute=&quot;width&quot; constant=&quot;12&quot; id=&quot;pok-V4-BbO&quot;/&gt;</span>
+<span class="f2">                            &lt;/constraints&gt;</span>
+<span class="f2">                        &lt;/imageView&gt;</span>
+<span class="f2">                        &lt;button opaque=&quot;NO&quot; contentMode=&quot;scaleToFill&quot; contentHorizontalAlignment=&quot;center&quot; contentVerticalAlignment=&quot;center&quot; lineBreakMode=&quot;middleTruncation&quot; translatesAutoresizingMaskIntoConstraints=&quot;NO&quot; id=&quot;4DL-y8-eYa&quot;&gt;</span>
+<span class="f2">                            &lt;rect key=&quot;frame&quot; x=&quot;0.0&quot; y=&quot;0.0&quot; width=&quot;320&quot; height=&quot;37&quot;/&gt;</span>
+<span class="f2">                            &lt;state key=&quot;normal&quot;&gt;</span>
+<span class="f2">                                &lt;color key=&quot;titleShadowColor&quot; white=&quot;0.5&quot; alpha=&quot;1&quot; colorSpace=&quot;calibratedWhite&quot;/&gt;</span>
+<span class="f2">                            &lt;/state&gt;</span>
+<span class="f2">                            &lt;connections&gt;</span>
+<span class="f2">                                &lt;action selector=&quot;realtimeClick:&quot; destination=&quot;-1&quot; eventType=&quot;touchUpInside&quot; id=&quot;b2o-hk-HnC&quot;/&gt;</span>
+<span class="f2">                            &lt;/connections&gt;</span>
+<span class="f2">                        &lt;/button&gt;</span>
+<span class="f2">                    &lt;/subviews&gt;</span>
+<span class="f2">                    &lt;color key=&quot;backgroundColor&quot; red=&quot;0.0&quot; green=&quot;0.0&quot; blue=&quot;0.0&quot; alpha=&quot;0.5&quot; colorSpace=&quot;calibratedRGB&quot;/&gt;</span>
+<span class="f2">                    &lt;constraints&gt;</span>
+<span class="f2">                        &lt;constraint firstAttribute=&quot;trailing&quot; secondItem=&quot;4DL-y8-eYa&quot; secondAttribute=&quot;trailing&quot; id=&quot;4Cg-Xt-J4N&quot;/&gt;</span>
+<span class="f2">                        &lt;constraint firstItem=&quot;4DL-y8-eYa&quot; firstAttribute=&quot;top&quot; secondItem=&quot;XDx-an-fMj&quot; secondAttribute=&quot;top&quot; id=&quot;579-e0-fpC&quot;/&gt;</span>
+<span class="f2">                        &lt;constraint firstItem=&quot;jU4-S5-AwC&quot; firstAttribute=&quot;leading&quot; secondItem=&quot;RlY-sc-aUB&quot; secondAttribute=&quot;trailing&quot; constant=&quot;8&quot; id=&quot;9jL-nQ-Ht2&quot;/&gt;</span>
+<span class="f2">                        &lt;constraint firstAttribute=&quot;bottom&quot; secondItem=&quot;4DL-y8-eYa&quot; secondAttribute=&quot;bottom&quot; id=&quot;ABr-MW-Qp9&quot;/&gt;</span>
+<span class="f2">                        &lt;constraint firstItem=&quot;jU4-S5-AwC&quot; firstAttribute=&quot;top&quot; secondItem=&quot;XDx-an-fMj&quot; secondAttribute=&quot;top&quot; constant=&quot;10&quot; id=&quot;CMc-aa-Vg1&quot;/&gt;</span>
+<span class="f2">                        &lt;constraint firstItem=&quot;RlY-sc-aUB&quot; firstAttribute=&quot;top&quot; secondItem=&quot;XDx-an-fMj&quot; secondAttribute=&quot;top&quot; constant=&quot;8&quot; id=&quot;NoH-Yj-xL3&quot;/&gt;</span>
+<span class="f2">                        &lt;constraint firstAttribute=&quot;height&quot; constant=&quot;37&quot; id=&quot;SDQ-zA-yJY&quot;/&gt;</span>
+<span class="f2">                        &lt;constraint firstItem=&quot;4DL-y8-eYa&quot; firstAttribute=&quot;leading&quot; secondItem=&quot;XDx-an-fMj&quot; secondAttribute=&quot;leading&quot; id=&quot;XJu-4W-rbT&quot;/&gt;</span>
+<span class="f2">                        &lt;constraint firstAttribute=&quot;bottom&quot; secondItem=&quot;RlY-sc-aUB&quot; secondAttribute=&quot;bottom&quot; constant=&quot;8&quot; id=&quot;jHG-x7-g2R&quot;/&gt;</span>
+<span class="f2">                        &lt;constraint firstItem=&quot;RlY-sc-aUB&quot; firstAttribute=&quot;leading&quot; secondItem=&quot;XDx-an-fMj&quot; secondAttribute=&quot;leading&quot; constant=&quot;29&quot; id=&quot;rfd-5r-8dj&quot;/&gt;</span>
+<span class="f2">                        &lt;constraint firstAttribute=&quot;trailing&quot; secondItem=&quot;jU4-S5-AwC&quot; secondAttribute=&quot;trailing&quot; constant=&quot;9&quot; id=&quot;wIt-pE-mN8&quot;/&gt;</span>
+<span class="f2">                        &lt;constraint firstAttribute=&quot;bottom&quot; secondItem=&quot;jU4-S5-AwC&quot; secondAttribute=&quot;bottom&quot; constant=&quot;9&quot; id=&quot;wdG-39-WHa&quot;/&gt;</span>
+<span class="f2">                    &lt;/constraints&gt;</span>
+<span class="f2">                &lt;/view&gt;</span>
+<span class="f2">                &lt;view contentMode=&quot;scaleToFill&quot; translatesAutoresizingMaskIntoConstraints=&quot;NO&quot;</span> id=&quot;5Rr-GG-Zm0&quot;&gt;
+                    &lt;rect key=&quot;frame&quot; x=&quot;85&quot; y=&quot;115&quot; width=&quot;150&quot; height=&quot;150&quot;/&gt;
+<span class="f1">                    &lt;autoresizingMask key=&quot;autoresizingMask&quot; flexibleMaxX=&quot;YES&quot; flexibleMaxY=&quot;YES&quot;/&gt;</span>
+                    &lt;subviews&gt;
+                        &lt;imageView userInteractionEnabled=&quot;NO&quot; contentMode=&quot;scaleToFill&quot; horizontalHuggingPriority=&quot;251&quot; verticalHuggingPriority=&quot;251&quot; <span class="f2">fixedFrame=&quot;YES&quot;</span> image=&quot;chat_realtime_mic_blue&quot; <span class="f2">translatesAutoresizingMaskIntoConstraints=&quot;NO&quot;</span> id=&quot;e7t-9N-Z1J&quot;&gt;
+                            &lt;rect key=&quot;frame&quot; x=&quot;44&quot; y=&quot;40&quot; width=&quot;62&quot; height=&quot;70&quot;/&gt;
+<span class="f1">                            &lt;autoresizingMask key=&quot;autoresizingMask&quot; widthSizable=&quot;YES&quot; heightSizable=&quot;YES&quot;/&gt;</span>
+                        &lt;/imageView&gt;
+                    &lt;/subviews&gt;
+                    &lt;color key=&quot;backgroundColor&quot; red=&quot;0.46666666670000001&quot; green=&quot;0.46666666670000001&quot; blue=&quot;0.46666666670000001&quot; alpha=&quot;0.80000000000000004&quot; colorSpace=&quot;custom&quot; customColorSpace=&quot;sRGB&quot;/&gt;
+                    <span class="f2">&lt;constraints&gt;</span>
+<span class="f2">                        &lt;constraint firstAttribute=&quot;height&quot; constant=&quot;150&quot; id=&quot;iFC-gD-UsA&quot;/&gt;</span>
+<span class="f2">                        &lt;constraint firstAttribute=&quot;width&quot; constant=&quot;150&quot; id=&quot;sHY-mm-FkD&quot;/&gt;</span>
+<span class="f2">                    &lt;/constraints&gt;</span>
+                &lt;/view&gt;
+<span class="f1">&lt;/subviews&gt;</span>
+<span class="f1">            &lt;color key=&quot;backgroundColor&quot; white=&quot;1&quot; alpha=&quot;1&quot; colorSpace=&quot;custom&quot; customColorSpace=&quot;calibratedWhite&quot;/&gt;</span>
+<span class="f1">        &lt;/view&gt;</span>                &lt;view<span class="f1">autoresizesSubviews=&quot;NO&quot;</span> clipsSubviews=&quot;YES&quot; contentMode=&quot;scaleToFill&quot; <span class="f2">translatesAutoresizingMaskIntoConstraints=&quot;NO&quot;</span> id=&quot;zKB-XH-MSL&quot;&gt;
+                    &lt;rect key=&quot;frame&quot; x=&quot;0.0&quot; <span class="f1">y=&quot;0.0&quot;</span><span class="f2">y=&quot;518&quot;</span> width=&quot;320&quot; height=&quot;150&quot;/&gt;<span class="f1">&lt;autoresizingMask key=&quot;autoresizingMask&quot; flexibleMaxX=&quot;YES&quot; flexibleMaxY=&quot;YES&quot;/&gt;</span>
+<span class="f1">            &lt;subviews&gt;</span>
+<span class="f1">                &lt;view autoresizesSubviews=&quot;NO&quot; contentMode=&quot;scaleToFill&quot; id=&quot;kdh-Ba-MD2&quot;&gt;</span>
+<span class="f1">                    &lt;rect key=&quot;frame&quot; x=&quot;45&quot; y=&quot;0.0&quot; width=&quot;230&quot; height=&quot;100&quot;/&gt;</span>
+<span class="f1">                    &lt;autoresizingMask key=&quot;autoresizingMask&quot; flexibleMaxX=&quot;YES&quot; flexibleMaxY=&quot;YES&quot;/&gt;</span>
+                    &lt;subviews&gt;
+                        <span class="f2">&lt;view contentMode=&quot;scaleToFill&quot; translatesAutoresizingMaskIntoConstraints=&quot;NO&quot; id=&quot;kdh-Ba-MD2&quot;&gt;</span>
+<span class="f2">                            &lt;rect key=&quot;frame&quot; x=&quot;45&quot; y=&quot;0.0&quot; width=&quot;188&quot; height=&quot;100&quot;/&gt;</span>
+<span class="f2">                            &lt;subviews&gt;</span>
+                                &lt;imageView userInteractionEnabled=&quot;NO&quot; contentMode=&quot;scaleToFill&quot; horizontalHuggingPriority=&quot;251&quot; verticalHuggingPriority=&quot;251&quot; image=&quot;chat_text_input&quot; <span class="f2">translatesAutoresizingMaskIntoConstraints=&quot;NO&quot;</span> id=&quot;amg-Pk-VBQ&quot;&gt;
+                                    &lt;rect key=&quot;frame&quot; x=&quot;0.0&quot; y=&quot;10&quot; <span class="f1">width=&quot;230&quot;</span><span class="f2">width=&quot;188&quot;</span> height=&quot;30&quot;/&gt;
+                                    <span class="f1">&lt;autoresizingMask key=&quot;autoresizingMask&quot; flexibleMaxX=&quot;YES&quot; flexibleMaxY=&quot;YES&quot;/&gt;</span><span class="f2">&lt;constraints&gt;</span>
+<span class="f2">                                        &lt;constraint firstAttribute=&quot;height&quot; constant=&quot;30&quot; id=&quot;zLk-Ov-Q48&quot;/&gt;</span>
+<span class="f2">                                    &lt;/constraints&gt;</span>
+                                &lt;/imageView&gt;
+                                <span class="f1">&lt;textField opaque=&quot;NO&quot;</span><span class="f2">&lt;textView</span> clipsSubviews=&quot;YES&quot; <span class="f2">multipleTouchEnabled=&quot;YES&quot;</span> contentMode=&quot;scaleToFill&quot; <span class="f1">contentHorizontalAlignment=&quot;left&quot; contentVerticalAlignment=&quot;center&quot; minimumFontSize=&quot;17&quot; id=&quot;lbF-KG-6J7&quot;&gt;</span><span class="f2">textAlignment=&quot;natural&quot; translatesAutoresizingMaskIntoConstraints=&quot;NO&quot; id=&quot;quI-yE-8aI&quot; customClass=&quot;GotyeInputTextView&quot;&gt;</span>
+                                    &lt;rect key=&quot;frame&quot; x=&quot;10&quot; y=&quot;10&quot; <span class="f1">width=&quot;210&quot;</span><span class="f2">width=&quot;168&quot;</span> height=&quot;30&quot;/&gt;
+                                    <span class="f1">&lt;autoresizingMask key=&quot;autoresizingMask&quot; flexibleMaxX=&quot;YES&quot; flexibleMaxY=&quot;YES&quot;/&gt;</span><span class="f2">&lt;color key=&quot;backgroundColor&quot; white=&quot;0.0&quot; alpha=&quot;0.0&quot; colorSpace=&quot;calibratedWhite&quot;/&gt;</span>
+<span class="f2">                                    &lt;constraints&gt;</span>
+<span class="f2">                                        &lt;constraint firstAttribute=&quot;height&quot; constant=&quot;30&quot; id=&quot;TOH-2i-Z3X&quot;/&gt;</span>
+<span class="f2">                                    &lt;/constraints&gt;</span>
+                                    &lt;fontDescription key=&quot;fontDescription&quot; type=&quot;system&quot; pointSize=&quot;14&quot;/&gt;
+                                    &lt;textInputTraits key=&quot;textInputTraits&quot; <span class="f1">returnKeyType=&quot;send&quot;/&gt;</span><span class="f2">autocapitalizationType=&quot;sentences&quot;/&gt;</span>
+                                    &lt;connections&gt;
+                                        <span class="f1">&lt;action selector=&quot;sendClick:&quot;</span><span class="f2">&lt;outlet property=&quot;delegate&quot;</span> destination=&quot;-1&quot; <span class="f1">eventType=&quot;editingDidEndOnExit&quot; id=&quot;WC7-74-P5S&quot;/&gt;</span><span class="f2">id=&quot;teq-oc-GC8&quot;/&gt;</span>
+                                    &lt;/connections&gt;
+                                <span class="f1">&lt;/textField&gt;</span><span class="f2">&lt;/textView&gt;</span>
+                                &lt;button opaque=&quot;NO&quot; <span class="f1">contentMode=&quot;scaleToFill&quot;</span><span class="f2">contentMode=&quot;center&quot;</span> contentHorizontalAlignment=&quot;center&quot; contentVerticalAlignment=&quot;center&quot; lineBreakMode=&quot;middleTruncation&quot; <span class="f2">translatesAutoresizingMaskIntoConstraints=&quot;NO&quot;</span> id=&quot;Iwm-nk-f2y&quot;&gt;
+                                    &lt;rect key=&quot;frame&quot; x=&quot;0.0&quot; <span class="f1">y=&quot;60&quot; width=&quot;230&quot; height=&quot;30&quot;/&gt;</span>
+<span class="f1">                            &lt;autoresizingMask key=&quot;autoresizingMask&quot; flexibleMaxX=&quot;YES&quot; flexibleMaxY=&quot;YES&quot;/&gt;</span><span class="f2">y=&quot;55&quot; width=&quot;188&quot; height=&quot;40&quot;/&gt;</span>
+<span class="f2">                                    &lt;constraints&gt;</span>
+<span class="f2">                                        &lt;constraint firstAttribute=&quot;height&quot; constant=&quot;40&quot; id=&quot;Zam-Dp-hO6&quot;/&gt;</span>
+<span class="f2">                                    &lt;/constraints&gt;</span>
+                                    &lt;fontDescription key=&quot;fontDescription&quot; type=&quot;boldSystem&quot; pointSize=&quot;15&quot;/&gt;
+                                    <span class="f2">&lt;inset key=&quot;imageEdgeInsets&quot; minX=&quot;0.0&quot; minY=&quot;0.0&quot; maxX=&quot;0.0&quot; maxY=&quot;5&quot;/&gt;</span>
+                                    &lt;state key=&quot;normal&quot; title=&quot;按住说话&quot; backgroundImage=&quot;chat_button_speak&quot;&gt;
+                                        &lt;color key=&quot;titleColor&quot; white=&quot;1&quot; alpha=&quot;1&quot; colorSpace=&quot;calibratedWhite&quot;/&gt;
+                                        &lt;color key=&quot;titleShadowColor&quot; white=&quot;0.0&quot; alpha=&quot;0.0&quot; colorSpace=&quot;calibratedWhite&quot;/&gt;
+                                    <span class="f2">&lt;/state&gt;</span>
+<span class="f2">                                    &lt;state key=&quot;highlighted&quot; backgroundImage=&quot;chat_button_speak_down&quot;/&gt;</span>
+<span class="f2">                                    &lt;connections&gt;</span>
+<span class="f2">                                        &lt;action selector=&quot;speakButtonDown:&quot; destination=&quot;-1&quot; eventType=&quot;touchDown&quot; id=&quot;WRE-p7-zew&quot;/&gt;</span>
+<span class="f2">                                        &lt;action selector=&quot;speakButtonUp:&quot; destination=&quot;-1&quot; eventType=&quot;touchUpInside&quot; id=&quot;dVi-56-z6k&quot;/&gt;</span>
+<span class="f2">                                        &lt;action selector=&quot;speakButtonUp:&quot; destination=&quot;-1&quot; eventType=&quot;touchUpOutside&quot; id=&quot;ndZ-cq-QUz&quot;/&gt;</span>
+<span class="f2">                                    &lt;/connections&gt;</span>
+<span class="f2">                                &lt;/button&gt;</span>
+<span class="f2">                            &lt;/subviews&gt;</span>
+<span class="f2">                            &lt;color key=&quot;backgroundColor&quot; white=&quot;1&quot; alpha=&quot;1&quot; colorSpace=&quot;custom&quot; customColorSpace=&quot;calibratedWhite&quot;/&gt;</span>
+<span class="f2">                            &lt;constraints&gt;</span>
+<span class="f2">                                &lt;constraint firstItem=&quot;quI-yE-8aI&quot; firstAttribute=&quot;top&quot; secondItem=&quot;kdh-Ba-MD2&quot; secondAttribute=&quot;top&quot; constant=&quot;10&quot; id=&quot;Ec3-rL-fPB&quot;/&gt;</span>
+<span class="f2">                                &lt;constraint firstItem=&quot;amg-Pk-VBQ&quot; firstAttribute=&quot;leading&quot; secondItem=&quot;kdh-Ba-MD2&quot; secondAttribute=&quot;leading&quot; id=&quot;JEG-da-AQi&quot;/&gt;</span>
+<span class="f2">                                &lt;constraint firstAttribute=&quot;height&quot; constant=&quot;100&quot; id=&quot;SNh-lw-Jsh&quot;/&gt;</span>
+<span class="f2">                                &lt;constraint firstAttribute=&quot;trailing&quot; secondItem=&quot;amg-Pk-VBQ&quot; secondAttribute=&quot;trailing&quot; id=&quot;T6c-Dr-GYL&quot;/&gt;</span>
+<span class="f2">                                &lt;constraint firstAttribute=&quot;bottom&quot; secondItem=&quot;Iwm-nk-f2y&quot; secondAttribute=&quot;bottom&quot; constant=&quot;5&quot; id=&quot;T7S-aR-WoR&quot;/&gt;</span>
+<span class="f2">                                &lt;constraint firstItem=&quot;Iwm-nk-f2y&quot; firstAttribute=&quot;leading&quot; secondItem=&quot;kdh-Ba-MD2&quot; secondAttribute=&quot;leading&quot; id=&quot;V4B-A5-OtD&quot;/&gt;</span>
+<span class="f2">                                &lt;constraint firstItem=&quot;amg-Pk-VBQ&quot; firstAttribute=&quot;top&quot; secondItem=&quot;kdh-Ba-MD2&quot; secondAttribute=&quot;top&quot; constant=&quot;10&quot; id=&quot;Wim-3t-D7Y&quot;/&gt;</span>
+<span class="f2">                                &lt;constraint firstAttribute=&quot;trailing&quot; secondItem=&quot;Iwm-nk-f2y&quot; secondAttribute=&quot;trailing&quot; id=&quot;m2U-s1-hNj&quot;/&gt;</span>
+<span class="f2">                                &lt;constraint firstItem=&quot;quI-yE-8aI&quot; firstAttribute=&quot;leading&quot; secondItem=&quot;kdh-Ba-MD2&quot; secondAttribute=&quot;leading&quot; constant=&quot;10&quot; id=&quot;u4I-aS-9GA&quot;/&gt;</span>
+<span class="f2">                                &lt;constraint firstAttribute=&quot;trailing&quot; secondItem=&quot;quI-yE-8aI&quot; secondAttribute=&quot;trailing&quot; constant=&quot;10&quot; id=&quot;v1v-kI-m7S&quot;/&gt;</span>
+<span class="f2">                            &lt;/constraints&gt;</span>
+<span class="f2">                        &lt;/view&gt;</span>
+<span class="f2">                        &lt;view contentMode=&quot;scaleToFill&quot; translatesAutoresizingMaskIntoConstraints=&quot;NO&quot; id=&quot;T23-7I-W4t&quot;&gt;</span>
+<span class="f2">                            &lt;rect key=&quot;frame&quot; x=&quot;0.0&quot; y=&quot;50&quot; width=&quot;320&quot; height=&quot;100&quot;/&gt;</span>
+<span class="f2">                            &lt;subviews&gt;</span>
+<span class="f2">                                &lt;button opaque=&quot;NO&quot; contentMode=&quot;scaleToFill&quot; contentHorizontalAlignment=&quot;center&quot; contentVerticalAlignment=&quot;center&quot; lineBreakMode=&quot;middleTruncation&quot; translatesAutoresizingMaskIntoConstraints=&quot;NO&quot; id=&quot;GQS-7R-k4K&quot;&gt;</span>
+<span class="f2">                                    &lt;rect key=&quot;frame&quot; x=&quot;25&quot; y=&quot;20&quot; width=&quot;51&quot; height=&quot;70&quot;/&gt;</span>
+<span class="f2">                                    &lt;constraints&gt;</span>
+<span class="f2">                                        &lt;constraint firstAttribute=&quot;width&quot; constant=&quot;51&quot; id=&quot;Fma-ke-wsA&quot;/&gt;</span>
+<span class="f2">                                        &lt;constraint firstAttribute=&quot;height&quot; constant=&quot;70&quot; id=&quot;OUd-5Q-j6V&quot;/&gt;</span>
+<span class="f2">                                    &lt;/constraints&gt;</span>
+<span class="f2">                                    &lt;fontDescription key=&quot;fontDescription&quot; type=&quot;system&quot; pointSize=&quot;13&quot;/&gt;</span>
+<span class="f2">                                    &lt;inset key=&quot;titleEdgeInsets&quot; minX=&quot;-48&quot; minY=&quot;56&quot; maxX=&quot;0.0&quot; maxY=&quot;0.0&quot;/&gt;</span>
+<span class="f2">                                    &lt;inset key=&quot;imageEdgeInsets&quot; minX=&quot;0.0&quot; minY=&quot;0.0&quot; maxX=&quot;0.0&quot; maxY=&quot;20&quot;/&gt;</span>
+<span class="f2">                                    &lt;state key=&quot;normal&quot; title=&quot;照片&quot; image=&quot;chat_button_pic&quot;&gt;</span>
+<span class="f2">                                        &lt;color key=&quot;titleColor&quot; white=&quot;0.33333333333333331&quot; alpha=&quot;1&quot; colorSpace=&quot;calibratedWhite&quot;/&gt;</span>
+<span class="f2">                                    &lt;/state&gt;</span>
+<span class="f2">                                    &lt;state key=&quot;highlighted&quot; image=&quot;chat_button_pic_down&quot;/&gt;</span>
+<span class="f2">                                    &lt;connections&gt;</span>
+<span class="f2">                                        &lt;action selector=&quot;albumClick:&quot; destination=&quot;-1&quot; eventType=&quot;touchUpInside&quot; id=&quot;dZX-Jw-0Fe&quot;/&gt;</span>
+<span class="f2">                                    &lt;/connections&gt;</span>
+<span class="f2">                                &lt;/button&gt;</span>
+<span class="f2">                                &lt;button opaque=&quot;NO&quot; contentMode=&quot;scaleToFill&quot; contentHorizontalAlignment=&quot;center&quot; contentVerticalAlignment=&quot;center&quot; lineBreakMode=&quot;middleTruncation&quot; translatesAutoresizingMaskIntoConstraints=&quot;NO&quot; id=&quot;INR-em-ERZ&quot;&gt;</span>
+<span class="f2">                                    &lt;rect key=&quot;frame&quot; x=&quot;135&quot; y=&quot;20&quot; width=&quot;51&quot; height=&quot;70&quot;/&gt;</span>
+<span class="f2">                                    &lt;constraints&gt;</span>
+<span class="f2">                                        &lt;constraint firstAttribute=&quot;height&quot; constant=&quot;70&quot; id=&quot;Fx2-C1-WW4&quot;/&gt;</span>
+<span class="f2">                                        &lt;constraint firstAttribute=&quot;width&quot; constant=&quot;51&quot; id=&quot;OKZ-by-3HX&quot;/&gt;</span>
+<span class="f2">                                    &lt;/constraints&gt;</span>
+<span class="f2">                                    &lt;fontDescription key=&quot;fontDescription&quot; type=&quot;system&quot; pointSize=&quot;13&quot;/&gt;</span>
+<span class="f2">                                    &lt;inset key=&quot;titleEdgeInsets&quot; minX=&quot;-51&quot; minY=&quot;56&quot; maxX=&quot;0.0&quot; maxY=&quot;0.0&quot;/&gt;</span>
+<span class="f2">                                    &lt;inset key=&quot;imageEdgeInsets&quot; minX=&quot;0.0&quot; minY=&quot;0.0&quot; maxX=&quot;0.0&quot; maxY=&quot;20&quot;/&gt;</span>
+<span class="f2">                                    &lt;state key=&quot;normal&quot; title=&quot;拍照&quot; image=&quot;chat_button_camera&quot;&gt;</span>
+<span class="f2">                                        &lt;color key=&quot;titleColor&quot; white=&quot;0.33333333333333331&quot; alpha=&quot;1&quot; colorSpace=&quot;calibratedWhite&quot;/&gt;</span>
+<span class="f2">                                    &lt;/state&gt;</span>
+<span class="f2">                                    &lt;state key=&quot;highlighted&quot; image=&quot;chat_button_camera_down&quot;/&gt;</span>
+<span class="f2">                                    &lt;connections&gt;</span>
+<span class="f2">                                        &lt;action selector=&quot;cameraButtonClick:&quot; destination=&quot;-1&quot; eventType=&quot;touchUpInside&quot; id=&quot;7DH-2L-5Xp&quot;/&gt;</span>
+<span class="f2">                                    &lt;/connections&gt;</span>
+<span class="f2">                                &lt;/button&gt;</span>
+<span class="f2">                                &lt;button opaque=&quot;NO&quot; contentMode=&quot;scaleToFill&quot; contentHorizontalAlignment=&quot;center&quot; contentVerticalAlignment=&quot;center&quot; lineBreakMode=&quot;middleTruncation&quot; translatesAutoresizingMaskIntoConstraints=&quot;NO&quot; id=&quot;Azu-nt-8pe&quot;&gt;</span>
+<span class="f2">                                    &lt;rect key=&quot;frame&quot; x=&quot;244&quot; y=&quot;20&quot; width=&quot;51&quot; height=&quot;70&quot;/&gt;</span>
+<span class="f2">                                    &lt;constraints&gt;</span>
+<span class="f2">                                        &lt;constraint firstAttribute=&quot;width&quot; constant=&quot;51&quot; id=&quot;as7-4n-DGX&quot;/&gt;</span>
+<span class="f2">                                        &lt;constraint firstAttribute=&quot;height&quot; constant=&quot;70&quot; id=&quot;qvr-0M-s97&quot;/&gt;</span>
+<span class="f2">                                    &lt;/constraints&gt;</span>
+<span class="f2">                                    &lt;fontDescription key=&quot;fontDescription&quot; type=&quot;system&quot; pointSize=&quot;13&quot;/&gt;</span>
+<span class="f2">                                    &lt;inset key=&quot;titleEdgeInsets&quot; minX=&quot;-52&quot; minY=&quot;56&quot; maxX=&quot;0.0&quot; maxY=&quot;0.0&quot;/&gt;</span>
+<span class="f2">                                    &lt;inset key=&quot;imageEdgeInsets&quot; minX=&quot;0.0&quot; minY=&quot;0.0&quot; maxX=&quot;0.0&quot; maxY=&quot;20&quot;/&gt;</span>
+<span class="f2">                                    &lt;state key=&quot;normal&quot; title=&quot;实时对讲&quot; image=&quot;chat_button_mic&quot;&gt;</span>
+<span class="f2">                                        &lt;color key=&quot;titleColor&quot; white=&quot;0.33333333333333331&quot; alpha=&quot;1&quot; colorSpace=&quot;calibratedWhite&quot;/&gt;</span>
+<span class="f2">                                    &lt;/state&gt;</span>
+<span class="f2">                                    &lt;state key=&quot;highlighted&quot; image=&quot;chat_button_mic_down&quot;/&gt;</span>
+<span class="f2">                                    &lt;connections&gt;</span>
+<span class="f2">                                        &lt;action selector=&quot;realtimeClick:&quot; destination=&quot;-1&quot; eventType=&quot;touchUpInside&quot; id=&quot;ewu-hw-9CM&quot;/&gt;</span>
+<span class="f2">                                    &lt;/connections&gt;</span>
+<span class="f2">                                &lt;/button&gt;</span>
+<span class="f2">                            &lt;/subviews&gt;</span>
+<span class="f2">                            &lt;color key=&quot;backgroundColor&quot; red=&quot;0.93333333333333335&quot; green=&quot;0.93333333333333335&quot; blue=&quot;0.93333333333333335&quot; alpha=&quot;1&quot; colorSpace=&quot;calibratedRGB&quot;/&gt;</span>
+<span class="f2">                            &lt;constraints&gt;</span>
+<span class="f2">                                &lt;constraint firstItem=&quot;INR-em-ERZ&quot; firstAttribute=&quot;centerX&quot; secondItem=&quot;T23-7I-W4t&quot; secondAttribute=&quot;centerX&quot; id=&quot;92Z-H2-ZRR&quot;/&gt;</span>
+<span class="f2">                                &lt;constraint firstItem=&quot;GQS-7R-k4K&quot; firstAttribute=&quot;top&quot; secondItem=&quot;T23-7I-W4t&quot; secondAttribute=&quot;top&quot; constant=&quot;20&quot; id=&quot;FP0-wB-n68&quot;/&gt;</span>
+<span class="f2">                                &lt;constraint firstAttribute=&quot;height&quot; constant=&quot;100&quot; id=&quot;LEB-Yg-leC&quot;/&gt;</span>
+<span class="f2">                                &lt;constraint firstItem=&quot;Azu-nt-8pe&quot; firstAttribute=&quot;top&quot; secondItem=&quot;T23-7I-W4t&quot; secondAttribute=&quot;top&quot; constant=&quot;20&quot; id=&quot;erJ-zg-5co&quot;/&gt;</span>
+<span class="f2">                                &lt;constraint firstItem=&quot;Azu-nt-8pe&quot; firstAttribute=&quot;centerX&quot; secondItem=&quot;T23-7I-W4t&quot; secondAttribute=&quot;centerX&quot; constant=&quot;109.5&quot; id=&quot;uJn-IW-k7h&quot;/&gt;</span>
+<span class="f2">                                &lt;constraint firstItem=&quot;INR-em-ERZ&quot; firstAttribute=&quot;top&quot; secondItem=&quot;T23-7I-W4t&quot; secondAttribute=&quot;top&quot; constant=&quot;20&quot; id=&quot;zuE-kf-wH2&quot;/&gt;</span>
+<span class="f2">                                &lt;constraint firstItem=&quot;GQS-7R-k4K&quot; firstAttribute=&quot;centerX&quot; secondItem=&quot;T23-7I-W4t&quot; secondAttribute=&quot;centerX&quot; constant=&quot;-109.5&quot; id=&quot;zxM-Xf-nIp&quot;/&gt;</span>
+<span class="f2">                            &lt;/constraints&gt;</span>
+<span class="f2">                        &lt;/view&gt;</span>
+<span class="f2">                        &lt;button opaque=&quot;NO&quot; contentMode=&quot;scaleToFill&quot; contentHorizontalAlignment=&quot;center&quot; contentVerticalAlignment=&quot;center&quot; lineBreakMode=&quot;middleTruncation&quot; translatesAutoresizingMaskIntoConstraints=&quot;NO&quot; id=&quot;bGh-5a-nw2&quot;&gt;</span>
+<span class="f2">                            &lt;rect key=&quot;frame&quot; x=&quot;2&quot; y=&quot;5&quot; width=&quot;40&quot; height=&quot;40&quot;/&gt;</span>
+<span class="f2">                            &lt;constraints&gt;</span>
+<span class="f2">                                &lt;constraint firstAttribute=&quot;width&quot; constant=&quot;40&quot; id=&quot;DyN-Ra-BZD&quot;/&gt;</span>
+<span class="f2">                                &lt;constraint firstAttribute=&quot;height&quot; constant=&quot;40&quot; id=&quot;zP5-re-cRn&quot;/&gt;</span>
+<span class="f2">                            &lt;/constraints&gt;</span>
+<span class="f2">                            &lt;inset key=&quot;imageEdgeInsets&quot; minX=&quot;5&quot; minY=&quot;5&quot; maxX=&quot;5&quot; maxY=&quot;5&quot;/&gt;</span>
+<span class="f2">                            &lt;state key=&quot;normal&quot; image=&quot;chat_button_voice&quot;&gt;</span>
+<span class="f2">                                &lt;color key=&quot;titleShadowColor&quot; white=&quot;0.5&quot; alpha=&quot;1&quot; colorSpace=&quot;calibratedWhite&quot;/&gt;</span>
+                            &lt;/state&gt;
+                            &lt;state key=&quot;highlighted&quot; <span class="f1">backgroundImage=&quot;chat_button_speak_down&quot;/&gt;</span><span class="f2">image=&quot;chat_button_voice_down&quot;/&gt;</span>
+                            &lt;connections&gt;
+                                &lt;action <span class="f1">selector=&quot;speakButtonDown:&quot; destination=&quot;-1&quot; eventType=&quot;touchDown&quot; id=&quot;WRE-p7-zew&quot;/&gt;</span>
+<span class="f1">                                &lt;action selector=&quot;speakButtonUp:&quot;</span><span class="f2">selector=&quot;voiceButtonClick:&quot;</span> destination=&quot;-1&quot; eventType=&quot;touchUpInside&quot; <span class="f1">id=&quot;dVi-56-z6k&quot;/&gt;</span>
+<span class="f1">                                &lt;action selector=&quot;speakButtonUp:&quot; destination=&quot;-1&quot; eventType=&quot;touchUpOutside&quot; id=&quot;ndZ-cq-QUz&quot;/&gt;</span><span class="f2">id=&quot;dQP-hx-ZIc&quot;/&gt;</span>
+                            &lt;/connections&gt;
+                        &lt;/button&gt;
+<span class="f1">&lt;/subviews&gt;</span>
+<span class="f1">                    &lt;color key=&quot;backgroundColor&quot; white=&quot;1&quot; alpha=&quot;1&quot; colorSpace=&quot;custom&quot; customColorSpace=&quot;calibratedWhite&quot;/&gt;</span>
+<span class="f1">                &lt;/view&gt;</span>
+<span class="f1">                &lt;view contentMode=&quot;scaleToFill&quot; id=&quot;T23-7I-W4t&quot;&gt;</span>
+<span class="f1">                    &lt;rect key=&quot;frame&quot; x=&quot;0.0&quot; y=&quot;50&quot; width=&quot;320&quot; height=&quot;100&quot;/&gt;</span>
+<span class="f1">                    &lt;autoresizingMask key=&quot;autoresizingMask&quot; widthSizable=&quot;YES&quot; heightSizable=&quot;YES&quot;/&gt;</span>
+<span class="f1">                    &lt;subviews&gt;</span>                        &lt;button opaque=&quot;NO&quot; <span class="f2">alpha=&quot;0.0&quot;</span> contentMode=&quot;scaleToFill&quot; contentHorizontalAlignment=&quot;center&quot; contentVerticalAlignment=&quot;center&quot; lineBreakMode=&quot;middleTruncation&quot; <span class="f1">id=&quot;GQS-7R-k4K&quot;&gt;</span><span class="f2">translatesAutoresizingMaskIntoConstraints=&quot;NO&quot; id=&quot;V4x-fy-5Np&quot;&gt;</span>
+                            &lt;rect key=&quot;frame&quot; <span class="f1">x=&quot;25&quot; y=&quot;20&quot; width=&quot;51&quot; height=&quot;70&quot;/&gt;</span>
+<span class="f1">                            &lt;autoresizingMask key=&quot;autoresizingMask&quot; flexibleMaxX=&quot;YES&quot; flexibleMaxY=&quot;YES&quot;/&gt;</span>
+<span class="f1">                            &lt;fontDescription key=&quot;fontDescription&quot; type=&quot;system&quot; pointSize=&quot;13&quot;/&gt;</span>
+<span class="f1">                            &lt;inset key=&quot;titleEdgeInsets&quot; minX=&quot;-48&quot; minY=&quot;56&quot; maxX=&quot;0.0&quot; maxY=&quot;0.0&quot;/&gt;</span><span class="f2">x=&quot;2&quot; y=&quot;5&quot; width=&quot;40&quot; height=&quot;40&quot;/&gt;</span>
+<span class="f2">                            &lt;constraints&gt;</span>
+<span class="f2">                                &lt;constraint firstAttribute=&quot;height&quot; constant=&quot;40&quot; id=&quot;L2P-Z7-SpZ&quot;/&gt;</span>
+<span class="f2">                                &lt;constraint firstAttribute=&quot;width&quot; constant=&quot;40&quot; id=&quot;qMW-oe-m13&quot;/&gt;</span>
+<span class="f2">                            &lt;/constraints&gt;</span>
+                            &lt;inset key=&quot;imageEdgeInsets&quot; <span class="f1">minX=&quot;0.0&quot; minY=&quot;0.0&quot; maxX=&quot;0.0&quot; maxY=&quot;20&quot;/&gt;</span><span class="f2">minX=&quot;5&quot; minY=&quot;5&quot; maxX=&quot;5&quot; maxY=&quot;5&quot;/&gt;</span>
+                            &lt;state key=&quot;normal&quot; <span class="f1">title=&quot;照片&quot; image=&quot;chat_button_pic&quot;&gt;</span><span class="f2">image=&quot;chat_button_write&quot;&gt;</span>
+                                &lt;color <span class="f1">key=&quot;titleColor&quot; white=&quot;0.33333333333333331&quot;</span><span class="f2">key=&quot;titleShadowColor&quot; white=&quot;0.5&quot;</span> alpha=&quot;1&quot; colorSpace=&quot;calibratedWhite&quot;/&gt;
+                            &lt;/state&gt;
+                            &lt;state key=&quot;highlighted&quot; <span class="f1">image=&quot;chat_button_pic_down&quot;/&gt;</span><span class="f2">image=&quot;chat_button_write_down&quot;/&gt;</span>
+                            &lt;connections&gt;
+                                &lt;action <span class="f1">selector=&quot;albumClick:&quot;</span><span class="f2">selector=&quot;writeButtonClick:&quot;</span> destination=&quot;-1&quot; eventType=&quot;touchUpInside&quot; <span class="f1">id=&quot;dZX-Jw-0Fe&quot;/&gt;</span><span class="f2">id=&quot;Ngu-Vt-qwe&quot;/&gt;</span>
+                            &lt;/connections&gt;
+                        &lt;/button&gt;
+                        &lt;button opaque=&quot;NO&quot; contentMode=&quot;scaleToFill&quot; contentHorizontalAlignment=&quot;center&quot; contentVerticalAlignment=&quot;center&quot; lineBreakMode=&quot;middleTruncation&quot; <span class="f1">id=&quot;INR-em-ERZ&quot;&gt;</span><span class="f2">translatesAutoresizingMaskIntoConstraints=&quot;NO&quot; id=&quot;hIO-j6-Pag&quot;&gt;</span>
+                            &lt;rect key=&quot;frame&quot; <span class="f1">x=&quot;135&quot; y=&quot;20&quot; width=&quot;51&quot; height=&quot;70&quot;/&gt;</span>
+<span class="f1">                            &lt;autoresizingMask key=&quot;autoresizingMask&quot; flexibleMaxX=&quot;YES&quot; flexibleMaxY=&quot;YES&quot;/&gt;</span>
+<span class="f1">                            &lt;fontDescription key=&quot;fontDescription&quot; type=&quot;system&quot; pointSize=&quot;13&quot;/&gt;</span>
+<span class="f1">                            &lt;inset key=&quot;titleEdgeInsets&quot; minX=&quot;-51&quot; minY=&quot;56&quot; maxX=&quot;0.0&quot; maxY=&quot;0.0&quot;/&gt;</span><span class="f2">x=&quot;277&quot; y=&quot;5&quot; width=&quot;40&quot; height=&quot;40&quot;/&gt;</span>
+<span class="f2">                            &lt;constraints&gt;</span>
+<span class="f2">                                &lt;constraint firstAttribute=&quot;width&quot; constant=&quot;40&quot; id=&quot;0l5-Rc-pxl&quot;/&gt;</span>
+<span class="f2">                                &lt;constraint firstAttribute=&quot;height&quot; constant=&quot;40&quot; id=&quot;nOE-Ri-Lqb&quot;/&gt;</span>
+<span class="f2">                            &lt;/constraints&gt;</span>
+                            &lt;inset key=&quot;imageEdgeInsets&quot; <span class="f1">minX=&quot;0.0&quot; minY=&quot;0.0&quot; maxX=&quot;0.0&quot; maxY=&quot;20&quot;/&gt;</span><span class="f2">minX=&quot;5&quot; minY=&quot;5&quot; maxX=&quot;5&quot; maxY=&quot;5&quot;/&gt;</span>
+                            &lt;state key=&quot;normal&quot; <span class="f1">title=&quot;拍照&quot; image=&quot;chat_button_camera&quot;&gt;</span><span class="f2">image=&quot;chat_button_add&quot;&gt;</span>
+                                &lt;color <span class="f1">key=&quot;titleColor&quot; white=&quot;0.33333333333333331&quot;</span><span class="f2">key=&quot;titleShadowColor&quot; white=&quot;0.5&quot;</span> alpha=&quot;1&quot; colorSpace=&quot;calibratedWhite&quot;/&gt;
+                            &lt;/state&gt;
+                            &lt;state key=&quot;highlighted&quot; <span class="f1">image=&quot;chat_button_camera_down&quot;/&gt;</span><span class="f2">image=&quot;chat_button_add_down&quot;/&gt;</span>
+                            &lt;connections&gt;
+                                &lt;action <span class="f1">selector=&quot;cameraButtonClick:&quot;</span><span class="f2">selector=&quot;addButtonClick:&quot;</span> destination=&quot;-1&quot; eventType=&quot;touchUpInside&quot; <span class="f1">id=&quot;7DH-2L-5Xp&quot;/&gt;</span><span class="f2">id=&quot;URa-x7-WjX&quot;/&gt;</span>
+                            &lt;/connections&gt;
+                        &lt;/button&gt;
+                        &lt;button opaque=&quot;NO&quot; contentMode=&quot;scaleToFill&quot; contentHorizontalAlignment=&quot;center&quot; contentVerticalAlignment=&quot;center&quot; lineBreakMode=&quot;middleTruncation&quot; <span class="f1">id=&quot;Azu-nt-8pe&quot;&gt;</span><span class="f2">translatesAutoresizingMaskIntoConstraints=&quot;NO&quot; id=&quot;eo7-rA-PbP&quot;&gt;</span>
+                            &lt;rect key=&quot;frame&quot; <span class="f1">x=&quot;244&quot; y=&quot;20&quot; width=&quot;51&quot; height=&quot;70&quot;/&gt;</span>
+<span class="f1">                            &lt;autoresizingMask key=&quot;autoresizingMask&quot; flexibleMaxX=&quot;YES&quot; flexibleMaxY=&quot;YES&quot;/&gt;</span>
+<span class="f1">                            &lt;fontDescription key=&quot;fontDescription&quot; type=&quot;system&quot; pointSize=&quot;13&quot;/&gt;</span>
+<span class="f1">                            &lt;inset key=&quot;titleEdgeInsets&quot; minX=&quot;-52&quot; minY=&quot;56&quot; maxX=&quot;0.0&quot; maxY=&quot;0.0&quot;/&gt;</span><span class="f2">x=&quot;235&quot; y=&quot;5&quot; width=&quot;40&quot; height=&quot;40&quot;/&gt;</span>
+<span class="f2">                            &lt;constraints&gt;</span>
+<span class="f2">                                &lt;constraint firstAttribute=&quot;height&quot; constant=&quot;40&quot; id=&quot;htb-2i-BWW&quot;/&gt;</span>
+<span class="f2">                                &lt;constraint firstAttribute=&quot;width&quot; constant=&quot;40&quot; id=&quot;mRD-ej-DCg&quot;/&gt;</span>
+<span class="f2">                            &lt;/constraints&gt;</span>
+                            &lt;inset key=&quot;imageEdgeInsets&quot; <span class="f1">minX=&quot;0.0&quot; minY=&quot;0.0&quot; maxX=&quot;0.0&quot; maxY=&quot;20&quot;/&gt;</span><span class="f2">minX=&quot;5&quot; minY=&quot;5&quot; maxX=&quot;5&quot; maxY=&quot;5&quot;/&gt;</span>
+                            &lt;state key=&quot;normal&quot; <span class="f1">title=&quot;实时对讲&quot; image=&quot;chat_button_mic&quot;&gt;</span><span class="f2">image=&quot;chat_button_face&quot;&gt;</span>
+                                &lt;color <span class="f1">key=&quot;titleColor&quot; white=&quot;0.33333333333333331&quot;</span><span class="f2">key=&quot;titleShadowColor&quot; white=&quot;0.5&quot;</span> alpha=&quot;1&quot; colorSpace=&quot;calibratedWhite&quot;/&gt;
+                            &lt;/state&gt;
+                            &lt;state <span class="f2">key=&quot;selected&quot; image=&quot;chat_button_keyboard&quot;/&gt;</span>
+<span class="f2">                            &lt;state</span> key=&quot;highlighted&quot; <span class="f1">image=&quot;chat_button_mic_down&quot;/&gt;</span><span class="f2">image=&quot;chat_button_add_down&quot;/&gt;</span>
+                            &lt;connections&gt;
+                                &lt;action <span class="f1">selector=&quot;realtimeClick:&quot;</span><span class="f2">selector=&quot;faceButtonClick:&quot;</span> destination=&quot;-1&quot; eventType=&quot;touchUpInside&quot; <span class="f1">id=&quot;ewu-hw-9CM&quot;/&gt;</span><span class="f2">id=&quot;SqX-B4-OoK&quot;/&gt;</span>
+                            &lt;/connections&gt;
+                        &lt;/button&gt;
+                    &lt;/subviews&gt;
+                    &lt;color key=&quot;backgroundColor&quot; <span class="f1">red=&quot;0.93333333333333335&quot; green=&quot;0.93333333333333335&quot; blue=&quot;0.93333333333333335&quot;</span><span class="f2">white=&quot;1&quot;</span> alpha=&quot;1&quot; <span class="f1">colorSpace=&quot;calibratedRGB&quot;/&gt;</span><span class="f2">colorSpace=&quot;custom&quot; customColorSpace=&quot;calibratedWhite&quot;/&gt;</span>
+<span class="f2">                    &lt;constraints&gt;</span>
+<span class="f2">                        &lt;constraint firstItem=&quot;hIO-j6-Pag&quot; firstAttribute=&quot;leading&quot; secondItem=&quot;eo7-rA-PbP&quot; secondAttribute=&quot;trailing&quot; constant=&quot;2&quot; id=&quot;41c-7u-UZQ&quot;/&gt;</span>
+<span class="f2">                        &lt;constraint firstItem=&quot;hIO-j6-Pag&quot; firstAttribute=&quot;top&quot; secondItem=&quot;zKB-XH-MSL&quot; secondAttribute=&quot;top&quot; constant=&quot;5&quot; id=&quot;5vP-Ta-7VT&quot;/&gt;</span>
+<span class="f2">                        &lt;constraint firstItem=&quot;eo7-rA-PbP&quot; firstAttribute=&quot;leading&quot; secondItem=&quot;kdh-Ba-MD2&quot; secondAttribute=&quot;trailing&quot; constant=&quot;2&quot; id=&quot;7fv-RZ-AFE&quot;/&gt;</span>
+<span class="f2">                        &lt;constraint firstItem=&quot;kdh-Ba-MD2&quot; firstAttribute=&quot;leading&quot; secondItem=&quot;V4x-fy-5Np&quot; secondAttribute=&quot;trailing&quot; constant=&quot;3&quot; id=&quot;CfC-a6-Nf2&quot;/&gt;</span>
+<span class="f2">                        &lt;constraint firstItem=&quot;V4x-fy-5Np&quot; firstAttribute=&quot;top&quot; secondItem=&quot;zKB-XH-MSL&quot; secondAttribute=&quot;top&quot; constant=&quot;5&quot; id=&quot;EsM-vT-d29&quot;/&gt;</span>
+<span class="f2">                        &lt;constraint firstItem=&quot;T23-7I-W4t&quot; firstAttribute=&quot;leading&quot; secondItem=&quot;zKB-XH-MSL&quot; secondAttribute=&quot;leading&quot; id=&quot;NSg-bk-ybe&quot;/&gt;</span>
+<span class="f2">                        &lt;constraint firstAttribute=&quot;trailing&quot; secondItem=&quot;hIO-j6-Pag&quot; secondAttribute=&quot;trailing&quot; constant=&quot;3&quot; id=&quot;Q6F-d7-jmf&quot;/&gt;</span>
+<span class="f2">                        &lt;constraint firstItem=&quot;V4x-fy-5Np&quot; firstAttribute=&quot;leading&quot; secondItem=&quot;zKB-XH-MSL&quot; secondAttribute=&quot;leading&quot; constant=&quot;2&quot; id=&quot;brP-De-KOz&quot;/&gt;</span>
+<span class="f2">                        &lt;constraint firstAttribute=&quot;bottom&quot; secondItem=&quot;T23-7I-W4t&quot; secondAttribute=&quot;bottom&quot; id=&quot;fZ5-IJ-qoF&quot;/&gt;</span>
+<span class="f2">                        &lt;constraint firstAttribute=&quot;trailing&quot; secondItem=&quot;T23-7I-W4t&quot; secondAttribute=&quot;trailing&quot; id=&quot;gXC-NN-iFD&quot;/&gt;</span>
+<span class="f2">                        &lt;constraint firstItem=&quot;kdh-Ba-MD2&quot; firstAttribute=&quot;top&quot; secondItem=&quot;zKB-XH-MSL&quot; secondAttribute=&quot;top&quot; id=&quot;ino-k7-whT&quot;/&gt;</span>
+<span class="f2">                        &lt;constraint firstItem=&quot;eo7-rA-PbP&quot; firstAttribute=&quot;top&quot; secondItem=&quot;zKB-XH-MSL&quot; secondAttribute=&quot;top&quot; constant=&quot;5&quot; id=&quot;lXR-Sd-f3E&quot;/&gt;</span>
+<span class="f2">                        &lt;constraint firstItem=&quot;bGh-5a-nw2&quot; firstAttribute=&quot;top&quot; secondItem=&quot;zKB-XH-MSL&quot; secondAttribute=&quot;top&quot; constant=&quot;5&quot; id=&quot;riV-07-Aip&quot;/&gt;</span>
+<span class="f2">                        &lt;constraint firstAttribute=&quot;height&quot; constant=&quot;150&quot; id=&quot;sl6-d3-tRL&quot;/&gt;</span>
+<span class="f2">                        &lt;constraint firstItem=&quot;bGh-5a-nw2&quot; firstAttribute=&quot;leading&quot; secondItem=&quot;zKB-XH-MSL&quot; secondAttribute=&quot;leading&quot; constant=&quot;2&quot; id=&quot;xT0-Y0-U1E&quot;/&gt;</span>
+<span class="f2">                    &lt;/constraints&gt;</span>
+                &lt;/view&gt;
+<span class="f1">                &lt;button opaque=&quot;NO&quot; contentMode=&quot;scaleToFill&quot; contentHorizontalAlignment=&quot;center&quot; contentVerticalAlignment=&quot;center&quot; lineBreakMode=&quot;middleTruncation&quot; id=&quot;bGh-5a-nw2&quot;&gt;</span>
+<span class="f1">                    &lt;rect key=&quot;frame&quot; x=&quot;2&quot; y=&quot;5&quot; width=&quot;40&quot; height=&quot;40&quot;/&gt;</span>
+<span class="f1">                    &lt;autoresizingMask key=&quot;autoresizingMask&quot; flexibleMaxX=&quot;YES&quot; flexibleMaxY=&quot;YES&quot;/&gt;</span>
+<span class="f1">                    &lt;inset key=&quot;imageEdgeInsets&quot; minX=&quot;5&quot; minY=&quot;5&quot; maxX=&quot;5&quot; maxY=&quot;5&quot;/&gt;</span>
+<span class="f1">                    &lt;state key=&quot;normal&quot; image=&quot;chat_button_voice&quot;&gt;</span>
+<span class="f1">                        &lt;color key=&quot;titleShadowColor&quot; white=&quot;0.5&quot; alpha=&quot;1&quot; colorSpace=&quot;calibratedWhite&quot;/&gt;</span>
+<span class="f1">                    &lt;/state&gt;</span>
+<span class="f1">                    &lt;state key=&quot;highlighted&quot; image=&quot;chat_button_voice_down&quot;/&gt;</span>
+<span class="f1">                    &lt;connections&gt;</span>
+<span class="f1">                        &lt;action selector=&quot;voiceButtonClick:&quot; destination=&quot;-1&quot; eventType=&quot;touchUpInside&quot; id=&quot;dQP-hx-ZIc&quot;/&gt;</span>
+<span class="f1">                    &lt;/connections&gt;</span>
+<span class="f1">                &lt;/button&gt;</span>
+<span class="f1">                &lt;button opaque=&quot;NO&quot; alpha=&quot;0.0&quot; contentMode=&quot;scaleToFill&quot; contentHorizontalAlignment=&quot;center&quot; contentVerticalAlignment=&quot;center&quot; lineBreakMode=&quot;middleTruncation&quot; id=&quot;V4x-fy-5Np&quot;&gt;</span>
+<span class="f1">                    &lt;rect key=&quot;frame&quot; x=&quot;2&quot; y=&quot;5&quot; width=&quot;40&quot; height=&quot;40&quot;/&gt;</span>
+<span class="f1">                    &lt;autoresizingMask key=&quot;autoresizingMask&quot; flexibleMaxX=&quot;YES&quot; flexibleMaxY=&quot;YES&quot;/&gt;</span>
+<span class="f1">                    &lt;inset key=&quot;imageEdgeInsets&quot; minX=&quot;5&quot; minY=&quot;5&quot; maxX=&quot;5&quot; maxY=&quot;5&quot;/&gt;</span>
+<span class="f1">                    &lt;state key=&quot;normal&quot; image=&quot;chat_button_write&quot;&gt;</span>
+<span class="f1">                        &lt;color key=&quot;titleShadowColor&quot; white=&quot;0.5&quot; alpha=&quot;1&quot; colorSpace=&quot;calibratedWhite&quot;/&gt;</span>
+<span class="f1">                    &lt;/state&gt;</span>
+<span class="f1">                    &lt;state key=&quot;highlighted&quot; image=&quot;chat_button_write_down&quot;/&gt;</span>
+<span class="f1">                    &lt;connections&gt;</span>
+<span class="f1">                        &lt;action selector=&quot;writeButtonClick:&quot; destination=&quot;-1&quot; eventType=&quot;touchUpInside&quot; id=&quot;Ngu-Vt-qwe&quot;/&gt;</span>
+<span class="f1">                    &lt;/connections&gt;</span>
+<span class="f1">                &lt;/button&gt;</span>
+<span class="f1">                &lt;button opaque=&quot;NO&quot; contentMode=&quot;scaleToFill&quot; contentHorizontalAlignment=&quot;center&quot; contentVerticalAlignment=&quot;center&quot; lineBreakMode=&quot;middleTruncation&quot; id=&quot;hIO-j6-Pag&quot;&gt;</span>
+<span class="f1">                    &lt;rect key=&quot;frame&quot; x=&quot;277&quot; y=&quot;5&quot; width=&quot;40&quot; height=&quot;40&quot;/&gt;</span>
+<span class="f1">                    &lt;autoresizingMask key=&quot;autoresizingMask&quot; flexibleMaxX=&quot;YES&quot; flexibleMaxY=&quot;YES&quot;/&gt;</span>
+<span class="f1">                    &lt;inset key=&quot;imageEdgeInsets&quot; minX=&quot;5&quot; minY=&quot;5&quot; maxX=&quot;5&quot; maxY=&quot;5&quot;/&gt;</span>
+<span class="f1">                    &lt;state key=&quot;normal&quot; image=&quot;chat_button_add&quot;&gt;</span>
+<span class="f1">                        &lt;color key=&quot;titleShadowColor&quot; white=&quot;0.5&quot; alpha=&quot;1&quot; colorSpace=&quot;calibratedWhite&quot;/&gt;</span>
+<span class="f1">                    &lt;/state&gt;</span>
+<span class="f1">                    &lt;state key=&quot;highlighted&quot; image=&quot;chat_button_add_down&quot;/&gt;</span>
+<span class="f1">                    &lt;connections&gt;</span>
+<span class="f1">                        &lt;action selector=&quot;addButtonClick:&quot; destination=&quot;-1&quot; eventType=&quot;touchUpInside&quot; id=&quot;URa-x7-WjX&quot;/&gt;</span>
+<span class="f1">                    &lt;/connections&gt;</span>
+<span class="f1">                &lt;/button&gt;</span>
+            &lt;/subviews&gt;
+            &lt;color key=&quot;backgroundColor&quot; white=&quot;1&quot; alpha=&quot;1&quot; colorSpace=&quot;custom&quot; customColorSpace=&quot;calibratedWhite&quot;/&gt;
+            <span class="f1">&lt;nil key=&quot;simulatedStatusBarMetrics&quot;/&gt;</span>
+<span class="f1">            &lt;freeformSimulatedSizeMetrics key=&quot;simulatedDestinationMetrics&quot;/&gt;</span>
+<span class="f1">        &lt;/view&gt;</span>
+<span class="f1">        &lt;view contentMode=&quot;scaleToFill&quot; id=&quot;XDx-an-fMj&quot;&gt;</span>
+<span class="f1">            &lt;rect key=&quot;frame&quot; x=&quot;0.0&quot; y=&quot;0.0&quot; width=&quot;320&quot; height=&quot;37&quot;/&gt;</span>
+<span class="f1">            &lt;autoresizingMask key=&quot;autoresizingMask&quot; flexibleMaxX=&quot;YES&quot; flexibleMaxY=&quot;YES&quot;/&gt;</span>
+<span class="f1">            &lt;subviews&gt;</span>
+<span class="f1">                &lt;label opaque=&quot;NO&quot; clipsSubviews=&quot;YES&quot; userInteractionEnabled=&quot;NO&quot; contentMode=&quot;left&quot; horizontalHuggingPriority=&quot;251&quot; verticalHuggingPriority=&quot;251&quot; text=&quot;Label&quot; textAlignment=&quot;center&quot; lineBreakMode=&quot;tailTruncation&quot; baselineAdjustment=&quot;alignBaselines&quot; adjustsFontSizeToFit=&quot;NO&quot; id=&quot;RlY-sc-aUB&quot;&gt;</span>
+<span class="f1">                    &lt;rect key=&quot;frame&quot; x=&quot;29&quot; y=&quot;8&quot; width=&quot;262&quot; height=&quot;21&quot;/&gt;</span>
+<span class="f1">                    &lt;autoresizingMask key=&quot;autoresizingMask&quot; flexibleMaxX=&quot;YES&quot; flexibleMaxY=&quot;YES&quot;/&gt;</span>
+<span class="f1">                    &lt;fontDescription key=&quot;fontDescription&quot; type=&quot;system&quot; pointSize=&quot;17&quot;/&gt;</span>
+<span class="f1">                    &lt;color key=&quot;textColor&quot; red=&quot;1&quot; green=&quot;1&quot; blue=&quot;1&quot; alpha=&quot;1&quot; colorSpace=&quot;custom&quot; customColorSpace=&quot;calibratedRGB&quot;/&gt;</span>
+<span class="f1">                    &lt;nil key=&quot;highlightedColor&quot;/&gt;</span>
+<span class="f1">                &lt;/label&gt;</span>
+<span class="f1">                &lt;imageView userInteractionEnabled=&quot;NO&quot; contentMode=&quot;scaleToFill&quot; horizontalHuggingPriority=&quot;251&quot; verticalHuggingPriority=&quot;251&quot; image=&quot;chat_realtime_arrow&quot; id=&quot;jU4-S5-AwC&quot;&gt;</span>
+<span class="f1">                    &lt;rect key=&quot;frame&quot; x=&quot;299&quot; y=&quot;10&quot; width=&quot;12&quot; height=&quot;18&quot;/&gt;</span>
+<span class="f1">                    &lt;autoresizingMask key=&quot;autoresizingMask&quot; flexibleMaxX=&quot;YES&quot; flexibleMaxY=&quot;YES&quot;/&gt;</span>
+<span class="f1">                &lt;/imageView&gt;</span>
+<span class="f1">                &lt;button opaque=&quot;NO&quot; contentMode=&quot;scaleToFill&quot; contentHorizontalAlignment=&quot;center&quot; contentVerticalAlignment=&quot;center&quot; lineBreakMode=&quot;middleTruncation&quot; id=&quot;4DL-y8-eYa&quot;&gt;</span>
+<span class="f1">                    &lt;rect key=&quot;frame&quot; x=&quot;0.0&quot; y=&quot;0.0&quot; width=&quot;320&quot; height=&quot;37&quot;/&gt;</span>
+<span class="f1">                    &lt;autoresizingMask key=&quot;autoresizingMask&quot; flexibleMaxX=&quot;YES&quot; flexibleMaxY=&quot;YES&quot;/&gt;</span>
+<span class="f1">                    &lt;state key=&quot;normal&quot;&gt;</span>
+<span class="f1">                        &lt;color key=&quot;titleShadowColor&quot; white=&quot;0.5&quot; alpha=&quot;1&quot; colorSpace=&quot;calibratedWhite&quot;/&gt;</span>
+<span class="f1">                    &lt;/state&gt;</span>
+<span class="f1">                    &lt;connections&gt;</span>
+<span class="f1">                        &lt;action selector=&quot;realtimeClick:&quot; destination=&quot;-1&quot; eventType=&quot;touchUpInside&quot; id=&quot;b2o-hk-HnC&quot;/&gt;</span>
+<span class="f1">                    &lt;/connections&gt;</span>
+<span class="f1">                &lt;/button&gt;</span>
+<span class="f1">            &lt;/subviews&gt;</span>
+<span class="f1">            &lt;color key=&quot;backgroundColor&quot; red=&quot;0.0&quot; green=&quot;0.0&quot; blue=&quot;0.0&quot; alpha=&quot;0.5&quot; colorSpace=&quot;calibratedRGB&quot;/&gt;</span>
+<span class="f1">            &lt;nil key=&quot;simulatedStatusBarMetrics&quot;/&gt;</span>
+<span class="f1">            &lt;freeformSimulatedSizeMetrics key=&quot;simulatedDestinationMetrics&quot;/&gt;</span><span class="f2">&lt;constraints&gt;</span>
+<span class="f2">                &lt;constraint firstAttribute=&quot;trailing&quot; secondItem=&quot;zKB-XH-MSL&quot; secondAttribute=&quot;trailing&quot; id=&quot;CX3-Tu-rdI&quot;/&gt;</span>
+<span class="f2">                &lt;constraint firstItem=&quot;XDx-an-fMj&quot; firstAttribute=&quot;top&quot; secondItem=&quot;i5M-Pr-FkT&quot; secondAttribute=&quot;top&quot; id=&quot;Fxa-Ka-3xo&quot;/&gt;</span>
+<span class="f2">                &lt;constraint firstItem=&quot;5Rr-GG-Zm0&quot; firstAttribute=&quot;top&quot; secondItem=&quot;i5M-Pr-FkT&quot; secondAttribute=&quot;top&quot; constant=&quot;115&quot; id=&quot;OpM-NJ-NBW&quot;/&gt;</span>
+<span class="f2">                &lt;constraint firstAttribute=&quot;trailing&quot; secondItem=&quot;LsY-SL-Xyj&quot; secondAttribute=&quot;trailing&quot; id=&quot;Uid-zR-OLp&quot;/&gt;</span>
+<span class="f2">                &lt;constraint firstAttribute=&quot;bottom&quot; secondItem=&quot;zKB-XH-MSL&quot; secondAttribute=&quot;bottom&quot; constant=&quot;-100&quot; id=&quot;UtL-Al-PAq&quot;/&gt;</span>
+<span class="f2">                &lt;constraint firstItem=&quot;5Rr-GG-Zm0&quot; firstAttribute=&quot;centerX&quot; secondItem=&quot;i5M-Pr-FkT&quot; secondAttribute=&quot;centerX&quot; id=&quot;af2-dP-mOJ&quot;/&gt;</span>
+<span class="f2">                &lt;constraint firstItem=&quot;zKB-XH-MSL&quot; firstAttribute=&quot;leading&quot; secondItem=&quot;i5M-Pr-FkT&quot; secondAttribute=&quot;leading&quot; id=&quot;flg-bh-6ST&quot;/&gt;</span>
+<span class="f2">                &lt;constraint firstItem=&quot;XDx-an-fMj&quot; firstAttribute=&quot;leading&quot; secondItem=&quot;i5M-Pr-FkT&quot; secondAttribute=&quot;leading&quot; id=&quot;gV1-FV-Tzn&quot;/&gt;</span>
+<span class="f2">                &lt;constraint firstItem=&quot;zKB-XH-MSL&quot; firstAttribute=&quot;top&quot; secondItem=&quot;LsY-SL-Xyj&quot; secondAttribute=&quot;bottom&quot; id=&quot;tCU-7O-Wxc&quot;/&gt;</span>
+<span class="f2">                &lt;constraint firstAttribute=&quot;trailing&quot; secondItem=&quot;XDx-an-fMj&quot; secondAttribute=&quot;trailing&quot; id=&quot;wzH-s9-Ase&quot;/&gt;</span>
+<span class="f2">                &lt;constraint firstItem=&quot;LsY-SL-Xyj&quot; firstAttribute=&quot;leading&quot; secondItem=&quot;i5M-Pr-FkT&quot; secondAttribute=&quot;leading&quot; id=&quot;zAP-jt-p7T&quot;/&gt;</span>
+<span class="f2">                &lt;constraint firstItem=&quot;LsY-SL-Xyj&quot; firstAttribute=&quot;top&quot; secondItem=&quot;i5M-Pr-FkT&quot; secondAttribute=&quot;top&quot; id=&quot;zq4-Zm-lcX&quot;/&gt;</span>
+<span class="f2">            &lt;/constraints&gt;</span>
+<span class="f2">            &lt;point key=&quot;canvasLocation&quot; x=&quot;317&quot; y=&quot;203&quot;/&gt;</span>
+        &lt;/view&gt;
+    &lt;/objects&gt;
+    &lt;resources&gt;
+<span class="f6">@@ -214,6 +319,8 @@</span>
+        &lt;image name=&quot;chat_button_add_down&quot; width=&quot;29&quot; height=&quot;29&quot;/&gt;
+        &lt;image name=&quot;chat_button_camera&quot; width=&quot;51&quot; height=&quot;50&quot;/&gt;
+        &lt;image name=&quot;chat_button_camera_down&quot; width=&quot;51&quot; height=&quot;50&quot;/&gt;
+        <span class="f2">&lt;image name=&quot;chat_button_face&quot; width=&quot;29&quot; height=&quot;29&quot;/&gt;</span>
+<span class="f2">        &lt;image name=&quot;chat_button_keyboard&quot; width=&quot;29&quot; height=&quot;29&quot;/&gt;</span>
+        &lt;image name=&quot;chat_button_mic&quot; width=&quot;51&quot; height=&quot;50&quot;/&gt;
+        &lt;image name=&quot;chat_button_mic_down&quot; width=&quot;51&quot; height=&quot;50&quot;/&gt;
+        &lt;image name=&quot;chat_button_pic&quot; width=&quot;51&quot; height=&quot;50&quot;/&gt;
+<span class="f6">@@ -228,9 +335,4 @@</span>
+        &lt;image name=&quot;chat_realtime_mic_blue&quot; width=&quot;62&quot; height=&quot;70&quot;/&gt;
+        &lt;image name=&quot;chat_text_input&quot; width=&quot;23&quot; height=&quot;21&quot;/&gt;
+    &lt;/resources&gt;
+<span class="f1">    &lt;simulatedMetricsContainer key=&quot;defaultSimulatedMetrics&quot;&gt;</span>
+<span class="f1">        &lt;simulatedStatusBarMetrics key=&quot;statusBar&quot;/&gt;</span>
+<span class="f1">        &lt;simulatedOrientationMetrics key=&quot;orientation&quot;/&gt;</span>
+<span class="f1">        &lt;simulatedScreenMetrics key=&quot;destination&quot; type=&quot;retina4&quot;/&gt;</span>
+<span class="f1">    &lt;/simulatedMetricsContainer&gt;</span>
+&lt;/document&gt;
 <span class="bold">diff --git a/GotyeIM/UI/ChatView/GotyeInputTextView.h b/GotyeIM/UI/ChatView/GotyeInputTextView.h</span>
 <span class="bold">new file mode 100644</span>
 <span class="bold">index 0000000..68d517b</span>
@@ -1478,10 +1885,10 @@ static GotyeChatViewController *chatViewRetainForBDVR = nil;
 <span class="f2">@end</span>
 <span class="bold">diff --git a/GotyeIM/UI/ChatView/GotyeInputTextView.m b/GotyeIM/UI/ChatView/GotyeInputTextView.m</span>
 <span class="bold">new file mode 100644</span>
-<span class="bold">index 0000000..5913f71</span>
+<span class="bold">index 0000000..fed55dc</span>
 <span class="bold">--- /dev/null</span>
 <span class="bold">+++ b/GotyeIM/UI/ChatView/GotyeInputTextView.m</span>
-<span class="f6">@@ -0,0 +1,39 @@</span>
+<span class="f6">@@ -0,0 +1,14 @@</span>
 <span class="f2">//</span>
 <span class="f2">//  GotyeInputTextView.m</span>
 <span class="f2">//  GotyeIM</span>
@@ -1495,31 +1902,6 @@ static GotyeChatViewController *chatViewRetainForBDVR = nil;
 <span class="f2">#import &lt;BQMM/BQMM.h&gt;</span>
 
 <span class="f2">@implementation GotyeInputTextView</span>
-
-<span class="f2">- (void)select:(id)sender {</span>
-<span class="f2">    NSRange selectedRange = self.selectedRange;</span>
-<span class="f2">    if (selectedRange.location &lt; self.text.length) {</span>
-<span class="f2">        self.selectedRange = NSMakeRange(selectedRange.location, 1);</span>
-<span class="f2">    } else {</span>
-<span class="f2">        self.selectedRange = NSMakeRange(selectedRange.location - 1, 1);</span>
-<span class="f2">    }</span>
-<span class="f2">}</span>
-
-<span class="f2">- (void)copy:(id)sender {</span>
-<span class="f2">    [UIPasteboard generalPasteboard].string = [self mmTextWithRange:self.selectedRange];</span>
-<span class="f2">}</span>
-
-<span class="f2">- (void)cut:(id)sender {</span>
-<span class="f2">    [UIPasteboard generalPasteboard].string = [self mmTextWithRange:self.selectedRange];</span>
-<span class="f2">    NSRange range  = [self.mmText rangeOfString:[UIPasteboard generalPasteboard].string];</span>
-<span class="f2">    NSString *left = [self.mmText substringToIndex:range.location];</span>
-<span class="f2">    NSString *right = [self.mmText substringFromIndex:range.location + range.length];</span>
-<span class="f2">    NSRange selectedRange = self.selectedRange;</span>
-<span class="f2">    self.mmText = [NSString stringWithFormat:@&quot;%@%@&quot;, left, right];</span>
-<span class="f2">    self.selectedRange = NSMakeRange(selectedRange.location, 0);</span>
-<span class="f2">    [self.delegate textViewDidChange:self];</span>
-<span class="f2">}</span>
-
 <span class="f2">@end</span>
 </pre>
 </body>
