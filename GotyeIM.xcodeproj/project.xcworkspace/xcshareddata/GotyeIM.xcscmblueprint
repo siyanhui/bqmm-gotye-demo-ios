@@ -1,0 +1,42 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "3BF034A36273F0A29BCF21778FEF6A7C9A8539B2",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "50cbe5fa-67d4-dc42-94d9-000c24c5d4ba++555" : {
+
+    },
+    "50cbe5fa-67d4-dc42-94d9-000c24c5d4ba++9971" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "50cbe5fa-67d4-dc42-94d9-000c24c5d4ba++555" : 0,
+    "3BF034A36273F0A29BCF21778FEF6A7C9A8539B2" : 0,
+    "50cbe5fa-67d4-dc42-94d9-000c24c5d4ba++9971" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "3FEECEF8-52AB-447D-8231-FAAA7CE329B8",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "50cbe5fa-67d4-dc42-94d9-000c24c5d4ba++555" : "gotyeapi\/",
+    "3BF034A36273F0A29BCF21778FEF6A7C9A8539B2" : "melink-ios\/",
+    "50cbe5fa-67d4-dc42-94d9-000c24c5d4ba++9971" : "proj.ios.IM\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "GotyeIM",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "GotyeIM\/GotyeIM.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/siyanhui\/melink-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3BF034A36273F0A29BCF21778FEF6A7C9A8539B2"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/192.168.1.18\/svn\/QINPLUS_SDK_VER2",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "50cbe5fa-67d4-dc42-94d9-000c24c5d4ba++555"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/192.168.1.18\/svn\/QINPLUS_SDK_VER2",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "50cbe5fa-67d4-dc42-94d9-000c24c5d4ba++9971"
+    }
+  ]
+}

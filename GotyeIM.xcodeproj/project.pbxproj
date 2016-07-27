@@ -1,0 +1,858 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		430E73AC1C00569200363677 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 430E73AB1C00569200363677 /* AddressBook.framework */; };
+		437B3F2D1BB3FB9300A9CE91 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 437B3F2C1BB3FB9300A9CE91 /* CFNetwork.framework */; };
+		437B3F301BB3FBA700A9CE91 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 437B3F2F1BB3FBA700A9CE91 /* MobileCoreServices.framework */; };
+		43C5CB371BF9C3B300C4A407 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43C5CB361BF9C3B300C4A407 /* Security.framework */; };
+		43C5CB3C1BF9C8E800C4A407 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43C5CB3B1BF9C8E800C4A407 /* GLKit.framework */; };
+		43C5CB3E1BF9C8EF00C4A407 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43C5CB3D1BF9C8EF00C4A407 /* CoreData.framework */; };
+		43CB31411AFB327E00FFD63D /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43CB31401AFB327E00FFD63D /* CoreTelephony.framework */; };
+		43DABD881ACA3BA600F84650 /* GotyeAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 43DABD871ACA3BA600F84650 /* GotyeAppDelegate.mm */; };
+		4D46FF921C97A438001A7AD7 /* libgotyeapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D46FF911C97A438001A7AD7 /* libgotyeapi.a */; };
+		4D70EA511C02EF4F00119803 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A18E5819D514A90001CFA2 /* CoreGraphics.framework */; };
+		4DD6EA4E1BD776DB0056DC4D /* GotyeChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD6EA4D1BD776DB0056DC4D /* GotyeChatTableViewCell.m */; };
+		9C8132CA1C9A5FB300635E31 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8132BF1C9A5FB300635E31 /* NSObject+SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		9C8132CB1C9A5FB300635E31 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8132C11C9A5FB300635E31 /* NSString+SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		9C8132CC1C9A5FB300635E31 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8132C31C9A5FB300635E31 /* SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		9C8132CD1C9A5FB300635E31 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8132C51C9A5FB300635E31 /* SBJsonBase.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		9C8132CE1C9A5FB300635E31 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8132C71C9A5FB300635E31 /* SBJsonParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		9C8132CF1C9A5FB300635E31 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8132C91C9A5FB300635E31 /* SBJsonWriter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		9C8132D21C9ABA7900635E31 /* GotyeInputTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8132D11C9ABA7900635E31 /* GotyeInputTextView.m */; };
+		CC7387931D48A117002732B2 /* BQMM.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CC73878A1D48A117002732B2 /* BQMM.bundle */; };
+		CC7387941D48A117002732B2 /* BQMM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC73878B1D48A117002732B2 /* BQMM.framework */; };
+		CC7387951D48A117002732B2 /* MMTextAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = CC73878E1D48A117002732B2 /* MMTextAttachment.m */; };
+		CC7387961D48A117002732B2 /* MMTextParser.m in Sources */ = {isa = PBXBuildFile; fileRef = CC7387901D48A117002732B2 /* MMTextParser.m */; };
+		CC7387971D48A117002732B2 /* MMTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC7387921D48A117002732B2 /* MMTextView.m */; };
+		CCB266391D2BA4DE00983385 /* Bugly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCB266381D2BA4DE00983385 /* Bugly.framework */; };
+		D073554019E5354100A64FCC /* GotyeContactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D073553E19E5354100A64FCC /* GotyeContactCell.xib */; };
+		D07F500519F632AB008DBBE3 /* GotyeRealTimeVoiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07F500319F632AB008DBBE3 /* GotyeRealTimeVoiceController.m */; };
+		D07F500619F632AB008DBBE3 /* GotyeRealTimeVoiceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D07F500419F632AB008DBBE3 /* GotyeRealTimeVoiceController.xib */; };
+		D0A18E5719D514A90001CFA2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A18E5619D514A90001CFA2 /* Foundation.framework */; };
+		D0A18E5B19D514A90001CFA2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A18E5A19D514A90001CFA2 /* UIKit.framework */; };
+		D0A18E6119D514A90001CFA2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D0A18E5F19D514A90001CFA2 /* InfoPlist.strings */; };
+		D0A18E6319D514A90001CFA2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A18E6219D514A90001CFA2 /* main.m */; };
+		D0A18E6919D514A90001CFA2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0A18E6819D514A90001CFA2 /* Images.xcassets */; };
+		D0A3B0D719EB9DAE002956F8 /* GotyeLoginController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D0A3B0D519EB9DAE002956F8 /* GotyeLoginController.mm */; };
+		D0A3B0D819EB9DAE002956F8 /* GotyeLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A3B0D619EB9DAE002956F8 /* GotyeLoginController.xib */; };
+		D0A3B0EC19EBDCAA002956F8 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A3B0EB19EBDCAA002956F8 /* AudioToolbox.framework */; };
+		D0A3B0EE19EBDCCA002956F8 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A3B0ED19EBDCCA002956F8 /* libz.1.2.5.dylib */; settings = {ATTRIBUTES = (Required, ); }; };
+		D0A4511D1A00BC0600E70359 /* GotyeGroupSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A4511C1A00BC0600E70359 /* GotyeGroupSearchController.m */; };
+		D0A451201A00BF4E00E70359 /* GotyeSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A4511F1A00BF4E00E70359 /* GotyeSearchBar.m */; };
+		D0A451241A00D0CF00E70359 /* GotyeSearchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A451231A00D0CF00E70359 /* GotyeSearchBar.xib */; };
+		D0A4E27819FB95B8007D14C2 /* GotyeAddFriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A4E27619FB95B8007D14C2 /* GotyeAddFriendCell.xib */; };
+		D0A595E21A14A3B10091AD65 /* GotyeGroupSearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A595E01A14A3B10091AD65 /* GotyeGroupSearchCell.xib */; };
+		D0BA64FC19D7E07A003F599C /* GotyeSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BA64FA19D7E07A003F599C /* GotyeSettingViewController.m */; };
+		D0BA650219D7F544003F599C /* GotyeMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0BA650019D7F544003F599C /* GotyeMessageCell.xib */; };
+		D0BC96DD19FA34F500F23017 /* GotyeSettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BC96DC19FA34F500F23017 /* GotyeSettingManager.m */; };
+		D0BC96E119FA4C1600F23017 /* GotyeChatRoomSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BC96E019FA4C1600F23017 /* GotyeChatRoomSettingController.m */; };
+		D0BDC4C519E639F8001A0AEA /* GotyeGroupCreateController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BDC4C319E639F8001A0AEA /* GotyeGroupCreateController.m */; };
+		D0BDC4C619E639F8001A0AEA /* GotyeGroupCreateController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0BDC4C419E639F8001A0AEA /* GotyeGroupCreateController.xib */; };
+		D0BDC4CA19E67AB2001A0AEA /* GotyeGroupSelUserController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BDC4C819E67AB2001A0AEA /* GotyeGroupSelUserController.m */; };
+		D0BDC4CE19E68889001A0AEA /* GotyeChatRoomListController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BDC4CD19E68889001A0AEA /* GotyeChatRoomListController.m */; };
+		D0BDC4D119E68D82001A0AEA /* GotyeGroupListController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BDC4D019E68D82001A0AEA /* GotyeGroupListController.m */; };
+		D0BDC4D319E694F7001A0AEA /* GotyeSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0BDC4D219E694F7001A0AEA /* GotyeSettingViewController.xib */; };
+		D0BF213A1A03563A0041AAAA /* GotyeLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BF21391A03563A0041AAAA /* GotyeLoadingView.m */; };
+		D0BF21401A0356590041AAAA /* GotyeLoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0BF213F1A0356590041AAAA /* GotyeLoadingView.xib */; };
+		D0C0C64719EF74D700138544 /* GotyeChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C0C64519EF74D700138544 /* GotyeChatViewController.m */; };
+		D0C0C64819EF74D700138544 /* GotyeChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0C0C64619EF74D700138544 /* GotyeChatViewController.xib */; };
+		D0C2B3BF1A0A127D002D40A5 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C2B3BE1A0A127D002D40A5 /* MBProgressHUD.m */; };
+		D0C9E03719D9365D00573396 /* GotyeOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C9E03619D9365D00573396 /* GotyeOverlayView.m */; };
+		D0C9E03A19D9373F00573396 /* GotyeContextMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C9E03919D9373F00573396 /* GotyeContextMenuCell.m */; };
+		D0C9E03D19D943E000573396 /* GotyeContextMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C9E03C19D943E000573396 /* GotyeContextMenuTableViewController.m */; };
+		D0C9E04619D945AB00573396 /* GotyeMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C9E04419D945AB00573396 /* GotyeMessageViewController.m */; };
+		D0C9E04719D945AB00573396 /* GotyeMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0C9E04519D945AB00573396 /* GotyeMessageViewController.xib */; };
+		D0C9E05219D95E2B00573396 /* GotyeNotifyController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C9E05019D95E2B00573396 /* GotyeNotifyController.m */; };
+		D0C9E05819D95F4500573396 /* GotyeNotifyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0C9E05619D95F4500573396 /* GotyeNotifyCell.xib */; };
+		D0C9E05C19D965C000573396 /* GotyeAddFriendController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C9E05A19D965C000573396 /* GotyeAddFriendController.m */; };
+		D0D3367919D7A4DA00FC4CF3 /* GotyeUIUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D3367819D7A4DA00FC4CF3 /* GotyeUIUtil.m */; };
+		D0D3369319D7B92100FC4CF3 /* GotyeTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D3368F19D7B92100FC4CF3 /* GotyeTabViewController.m */; };
+		D0D3369819D7D38200FC4CF3 /* GotyeContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D3369619D7D38200FC4CF3 /* GotyeContactViewController.m */; };
+		D0D3369919D7D38200FC4CF3 /* GotyeContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0D3369719D7D38200FC4CF3 /* GotyeContactViewController.xib */; };
+		D0D579A11A36E06900AE4F1F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0D579A01A36E06900AE4F1F /* AVFoundation.framework */; };
+		D0D579A31A36E08D00AE4F1F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0D579A21A36E08D00AE4F1F /* SystemConfiguration.framework */; };
+		D0D69E471A8CA7FA0036839A /* XCode6Patch.mm in Sources */ = {isa = PBXBuildFile; fileRef = D0D69E461A8CA7FA0036839A /* XCode6Patch.mm */; };
+		D0E2EAB319F0B902001A653E /* GotyeChatBubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E2EAB219F0B902001A653E /* GotyeChatBubbleView.m */; };
+		D0EE774B19F8DEB000879F91 /* GotyeGroupDismissController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EE774719F8DEB000879F91 /* GotyeGroupDismissController.m */; };
+		D0EE774C19F8DEB000879F91 /* GotyeGroupDismissController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0EE774819F8DEB000879F91 /* GotyeGroupDismissController.xib */; };
+		D0EE774D19F8DEB000879F91 /* GotyeGroupSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EE774A19F8DEB000879F91 /* GotyeGroupSettingController.m */; };
+		D0EE775119F8F58D00879F91 /* GotyeUserInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EE774F19F8F58D00879F91 /* GotyeUserInfoController.m */; };
+		D0EE775219F8F58D00879F91 /* GotyeUserInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0EE775019F8F58D00879F91 /* GotyeUserInfoController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		430E73AB1C00569200363677 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		432392C11AB5D473000AE474 /* libgotyeapi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgotyeapi.a; path = gotyeapi_ex_v3.0_20150215_ios/libs/libgotyeapi.a; sourceTree = "<group>"; };
+		432393051AB5DC5F000AE474 /* libgotyeapi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgotyeapi.a; path = "gotyeapi_ex_v3.0_20150215_ios 2/libs/libgotyeapi.a"; sourceTree = "<group>"; };
+		436F0A851AF0F3A9008B38DF /* liblibv2t.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = liblibv2t.a; path = GotyeIM/GotyeAPI/liblibv2t.a; sourceTree = "<group>"; };
+		436F0AD71AF76136008B38DF /* libgotyeapi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgotyeapi.a; path = ../../deployment/0407/gotyeapi_ex_v3.0_20150407_ios/libs/libgotyeapi.a; sourceTree = "<group>"; };
+		437B3F2C1BB3FB9300A9CE91 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		437B3F2F1BB3FBA700A9CE91 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		43C5CB361BF9C3B300C4A407 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		43C5CB3B1BF9C8E800C4A407 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		43C5CB3D1BF9C8EF00C4A407 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		43CB313B1AFB322200FFD63D /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iflyMSC.framework; path = ../../proj.ios.v2t/libv2t/libv2t/lib/iflyMSC.framework; sourceTree = "<group>"; };
+		43CB31401AFB327E00FFD63D /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		43DABD871ACA3BA600F84650 /* GotyeAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GotyeAppDelegate.mm; sourceTree = "<group>"; };
+		4D46FF891C97A438001A7AD7 /* GotyeOCAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotyeOCAPI.h; sourceTree = "<group>"; };
+		4D46FF8A1C97A438001A7AD7 /* GotyeOCChatTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotyeOCChatTarget.h; sourceTree = "<group>"; };
+		4D46FF8B1C97A438001A7AD7 /* GotyeOCDeleget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotyeOCDeleget.h; sourceTree = "<group>"; };
+		4D46FF8C1C97A438001A7AD7 /* GotyeOCGroupMsgConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotyeOCGroupMsgConfig.h; sourceTree = "<group>"; };
+		4D46FF8D1C97A438001A7AD7 /* GotyeOCMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotyeOCMedia.h; sourceTree = "<group>"; };
+		4D46FF8E1C97A438001A7AD7 /* GotyeOCMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotyeOCMessage.h; sourceTree = "<group>"; };
+		4D46FF8F1C97A438001A7AD7 /* GotyeOCNotify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotyeOCNotify.h; sourceTree = "<group>"; };
+		4D46FF901C97A438001A7AD7 /* GotyeOCStatusCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotyeOCStatusCode.h; sourceTree = "<group>"; };
+		4D46FF911C97A438001A7AD7 /* libgotyeapi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libgotyeapi.a; sourceTree = "<group>"; };
+		4DD6EA4C1BD776DB0056DC4D /* GotyeChatTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotyeChatTableViewCell.h; sourceTree = "<group>"; };
+		4DD6EA4D1BD776DB0056DC4D /* GotyeChatTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GotyeChatTableViewCell.m; sourceTree = "<group>"; };
+		9C8132BD1C9A5FB300635E31 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		9C8132BE1C9A5FB300635E31 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		9C8132BF1C9A5FB300635E31 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		9C8132C01C9A5FB300635E31 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		9C8132C11C9A5FB300635E31 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		9C8132C21C9A5FB300635E31 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		9C8132C31C9A5FB300635E31 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
+		9C8132C41C9A5FB300635E31 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		9C8132C51C9A5FB300635E31 /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
+		9C8132C61C9A5FB300635E31 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		9C8132C71C9A5FB300635E31 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		9C8132C81C9A5FB300635E31 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		9C8132C91C9A5FB300635E31 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		9C8132D01C9ABA7900635E31 /* GotyeInputTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotyeInputTextView.h; sourceTree = "<group>"; };
+		9C8132D11C9ABA7900635E31 /* GotyeInputTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GotyeInputTextView.m; sourceTree = "<group>"; };
+		CC73878A1D48A117002732B2 /* BQMM.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BQMM.bundle; sourceTree = "<group>"; };
+		CC73878B1D48A117002732B2 /* BQMM.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BQMM.framework; sourceTree = "<group>"; };
+		CC73878D1D48A117002732B2 /* MMTextAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTextAttachment.h; sourceTree = "<group>"; };
+		CC73878E1D48A117002732B2 /* MMTextAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTextAttachment.m; sourceTree = "<group>"; };
+		CC73878F1D48A117002732B2 /* MMTextParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTextParser.h; sourceTree = "<group>"; };
+		CC7387901D48A117002732B2 /* MMTextParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTextParser.m; sourceTree = "<group>"; };
+		CC7387911D48A117002732B2 /* MMTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTextView.h; sourceTree = "<group>"; };
+		CC7387921D48A117002732B2 /* MMTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTextView.m; sourceTree = "<group>"; };
+		CCB266381D2BA4DE00983385 /* Bugly.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bugly.framework; sourceTree = "<group>"; };
+		D073553E19E5354100A64FCC /* GotyeContactCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GotyeContactCell.xib; sourceTree = "<group>"; };
+		D07F500219F632AB008DBBE3 /* GotyeRealTimeVoiceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotyeRealTimeVoiceController.h; sourceTree = "<group>"; };
+		D07F500319F632AB008DBBE3 /* GotyeRealTimeVoiceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GotyeRealTimeVoiceController.m; sourceTree = "<group>"; };
+		D07F500419F632AB008DBBE3 /* GotyeRealTimeVoiceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GotyeRealTimeVoiceController.xib; sourceTree = "<group>"; };
+		D0A18E5319D514A90001CFA2 /* GotyeIM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GotyeIM.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0A18E5619D514A90001CFA2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D0A18E5819D514A90001CFA2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D0A18E5A19D514A90001CFA2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D0A18E5E19D514A90001CFA2 /* GotyeIM-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GotyeIM-Info.plist"; sourceTree = "<group>"; };
+		D0A18E6019D514A90001CFA2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D0A18E6219D514A90001CFA2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D0A18E6419D514A90001CFA2 /* GotyeIM-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GotyeIM-Prefix.pch"; sourceTree = "<group>"; };
+		D0A18E6519D514A90001CFA2 /* GotyeAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GotyeAppDelegate.h; sourceTree = "<group>"; };
+		D0A18E6819D514A90001CFA2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D0A3B0D419EB9DAE002956F8 /* GotyeLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotyeLoginController.h; sourceTree = "<group>"; };
+		D0A3B0D519EB9DAE002956F8 /* GotyeLoginController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GotyeLoginController.mm; sourceTree = "<group>"; };
+		D0A3B0D619EB9DAE002956F8 /* GotyeLoginController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GotyeLoginController.xib; sourceTree = "<group>"; };
+		D0A3B0E919EBA49E002956F8 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
+		D0A3B0EB19EBDCAA002956F8 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		D0A3B0ED19EBDCCA002956F8 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
+		D0A4511B1A00BC0600E70359 /* GotyeGroupSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotyeGroupSearchController.h; sourceTree = "<group>"; };
+		D0A4511C1A00BC0600E70359 /* GotyeGroupSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GotyeGroupSearchController.m; sourceTree = "<group>"; };
+		D0A4511E1A00BF4E00E70359 /* GotyeSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotyeSearchBar.h; sourceTree = "<group>"; };
+		D0A4511F1A00BF4E00E70359 /* GotyeSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GotyeSearchBar.m; sourceTree = "<group>"; };
+		D0A451231A00D0CF00E70359 /* GotyeSearchBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GotyeSearchBar.xib; sourceTree = "<group>"; };
+		D0A4E27619FB95B8007D14C2 /* GotyeAddFriendCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GotyeAddFriendCell.xib; sourceTree = "<group>"; };
+		D0A595E01A14A3B10091AD65 /* GotyeGroupSearchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GotyeGroupSearchCell.xib; sourceTree = "<group>"; };
+		D0BA64F919D7E07A003F599C /* GotyeSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotyeSettingViewController.h; sourceTree = "<group>"; };
+		D0BA64FA19D7E07A003F599C /* GotyeSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GotyeSettingViewController.m; sourceTree = "<group>"; };
+		D0BA650019D7F544003F599C /* GotyeMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GotyeMessageCell.xib; sourceTree = "<group>"; };
+		D0BC96DB19FA34F500F23017 /* GotyeSettingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotyeSettingManager.h; sourceTree = "<group>"; };
+		D0BC96DC19FA34F500F23017 /* GotyeSettingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GotyeSettingManager.m; sourceTree = "<group>"; };
+		D0BC96DF19FA4C1600F23017 /* GotyeChatRoomSettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotyeChatRoomSettingController.h; sourceTree = "<group>"; };
+		D0BC96E019FA4C1600F23017 /* GotyeChatRoomSettingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GotyeChatRoomSettingController.m; sourceTree = "<group>"; };
+		D0BDC4C219E639F8001A0AEA /* GotyeGroupCreateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotyeGroupCreateController.h; sourceTree = "<group>"; };
+		D0BDC4C319E639F8001A0AEA /* GotyeGroupCreateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GotyeGroupCreateController.m; sourceTree = "<group>"; };
+		D0BDC4C419E639F8001A0AEA /* GotyeGroupCreateController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GotyeGroupCreateController.xib; sourceTree = "<group>"; };
+		D0BDC4C719E67AB2001A0AEA /* GotyeGroupSelUserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotyeGroupSelUserController.h; sourceTree = "<group>"; };
+		D0BDC4C819E67AB2001A0AEA /* GotyeGroupSelUserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GotyeGroupSelUserController.m; sourceTree = "<group>"; };
+		D0BDC4CC19E68889001A0AEA /* GotyeChatRoomListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotyeChatRoomListController.h; sourceTree = "<group>"; };
+		D0BDC4CD19E68889001A0AEA /* GotyeChatRoomListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GotyeChatRoomListController.m; sourceTree = "<group>"; };
+		D0BDC4CF19E68D82001A0AEA /* GotyeGroupListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotyeGroupListController.h; sourceTree = "<group>"; };
+		D0BDC4D019E68D82001A0AEA /* GotyeGroupListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GotyeGroupListController.m; sourceTree = "<group>"; };
+		D0BDC4D219E694F7001A0AEA /* GotyeSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GotyeSettingViewController.xib; sourceTree = "<group>"; };
+		D0BF21381A03563A0041AAAA /* GotyeLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotyeLoadingView.h; sourceTree = "<group>"; };
+		D0BF21391A03563A0041AAAA /* GotyeLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GotyeLoadingView.m; sourceTree = "<group>"; };
+		D0BF213F1A0356590041AAAA /* GotyeLoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GotyeLoadingView.xib; sourceTree = "<group>"; };
+		D0C0C64419EF74D700138544 /* GotyeChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotyeChatViewController.h; sourceTree = "<group>"; };
+		D0C0C64519EF74D700138544 /* GotyeChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GotyeChatViewController.m; sourceTree = "<group>"; };
+		D0C0C64619EF74D700138544 /* GotyeChatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GotyeChatViewController.xib; sourceTree = "<group>"; };
+		D0C2B3BD1A0A127D002D40A5 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		D0C2B3BE1A0A127D002D40A5 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		D0C9E03519D9365D00573396 /* GotyeOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotyeOverlayView.h; sourceTree = "<group>"; };
+		D0C9E03619D9365D00573396 /* GotyeOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GotyeOverlayView.m; sourceTree = "<group>"; };
+		D0C9E03819D9373F00573396 /* GotyeContextMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotyeContextMenuCell.h; sourceTree = "<group>"; };
+		D0C9E03919D9373F00573396 /* GotyeContextMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GotyeContextMenuCell.m; sourceTree = "<group>"; };
+		D0C9E03B19D943E000573396 /* GotyeContextMenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotyeContextMenuTableViewController.h; sourceTree = "<group>"; };
+		D0C9E03C19D943E000573396 /* GotyeContextMenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GotyeContextMenuTableViewController.m; sourceTree = "<group>"; };
+		D0C9E04319D945AB00573396 /* GotyeMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotyeMessageViewController.h; sourceTree = "<group>"; };
+		D0C9E04419D945AB00573396 /* GotyeMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GotyeMessageViewController.m; sourceTree = "<group>"; };
+		D0C9E04519D945AB00573396 /* GotyeMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GotyeMessageViewController.xib; sourceTree = "<group>"; };
+		D0C9E04F19D95E2B00573396 /* GotyeNotifyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotyeNotifyController.h; sourceTree = "<group>"; };
+		D0C9E05019D95E2B00573396 /* GotyeNotifyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GotyeNotifyController.m; sourceTree = "<group>"; };
+		D0C9E05619D95F4500573396 /* GotyeNotifyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GotyeNotifyCell.xib; sourceTree = "<group>"; };
+		D0C9E05919D965C000573396 /* GotyeAddFriendController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotyeAddFriendController.h; sourceTree = "<group>"; };
+		D0C9E05A19D965C000573396 /* GotyeAddFriendController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GotyeAddFriendController.m; sourceTree = "<group>"; };
+		D0D3367719D7A4DA00FC4CF3 /* GotyeUIUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotyeUIUtil.h; sourceTree = "<group>"; };
+		D0D3367819D7A4DA00FC4CF3 /* GotyeUIUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GotyeUIUtil.m; sourceTree = "<group>"; };
+		D0D3368E19D7B92100FC4CF3 /* GotyeTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotyeTabViewController.h; sourceTree = "<group>"; };
+		D0D3368F19D7B92100FC4CF3 /* GotyeTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GotyeTabViewController.m; sourceTree = "<group>"; };
+		D0D3369519D7D38200FC4CF3 /* GotyeContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotyeContactViewController.h; sourceTree = "<group>"; };
+		D0D3369619D7D38200FC4CF3 /* GotyeContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GotyeContactViewController.m; sourceTree = "<group>"; };
+		D0D3369719D7D38200FC4CF3 /* GotyeContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GotyeContactViewController.xib; sourceTree = "<group>"; };
+		D0D579A01A36E06900AE4F1F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		D0D579A21A36E08D00AE4F1F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		D0D69E461A8CA7FA0036839A /* XCode6Patch.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = XCode6Patch.mm; sourceTree = "<group>"; };
+		D0E2EAB119F0B902001A653E /* GotyeChatBubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotyeChatBubbleView.h; sourceTree = "<group>"; };
+		D0E2EAB219F0B902001A653E /* GotyeChatBubbleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GotyeChatBubbleView.m; sourceTree = "<group>"; };
+		D0EC51471A3FFEAE00A637C4 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
+		D0EE774619F8DEB000879F91 /* GotyeGroupDismissController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotyeGroupDismissController.h; sourceTree = "<group>"; };
+		D0EE774719F8DEB000879F91 /* GotyeGroupDismissController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GotyeGroupDismissController.m; sourceTree = "<group>"; };
+		D0EE774819F8DEB000879F91 /* GotyeGroupDismissController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GotyeGroupDismissController.xib; sourceTree = "<group>"; };
+		D0EE774919F8DEB000879F91 /* GotyeGroupSettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotyeGroupSettingController.h; sourceTree = "<group>"; };
+		D0EE774A19F8DEB000879F91 /* GotyeGroupSettingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GotyeGroupSettingController.m; sourceTree = "<group>"; };
+		D0EE774E19F8F58D00879F91 /* GotyeUserInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotyeUserInfoController.h; sourceTree = "<group>"; };
+		D0EE774F19F8F58D00879F91 /* GotyeUserInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GotyeUserInfoController.m; sourceTree = "<group>"; };
+		D0EE775019F8F58D00879F91 /* GotyeUserInfoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GotyeUserInfoController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D0A18E5019D514A90001CFA2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D70EA511C02EF4F00119803 /* CoreGraphics.framework in Frameworks */,
+				430E73AC1C00569200363677 /* AddressBook.framework in Frameworks */,
+				CCB266391D2BA4DE00983385 /* Bugly.framework in Frameworks */,
+				43C5CB3E1BF9C8EF00C4A407 /* CoreData.framework in Frameworks */,
+				43C5CB3C1BF9C8E800C4A407 /* GLKit.framework in Frameworks */,
+				43C5CB371BF9C3B300C4A407 /* Security.framework in Frameworks */,
+				437B3F301BB3FBA700A9CE91 /* MobileCoreServices.framework in Frameworks */,
+				CC7387941D48A117002732B2 /* BQMM.framework in Frameworks */,
+				437B3F2D1BB3FB9300A9CE91 /* CFNetwork.framework in Frameworks */,
+				43CB31411AFB327E00FFD63D /* CoreTelephony.framework in Frameworks */,
+				4D46FF921C97A438001A7AD7 /* libgotyeapi.a in Frameworks */,
+				D0D579A31A36E08D00AE4F1F /* SystemConfiguration.framework in Frameworks */,
+				D0D579A11A36E06900AE4F1F /* AVFoundation.framework in Frameworks */,
+				D0A3B0EC19EBDCAA002956F8 /* AudioToolbox.framework in Frameworks */,
+				D0A3B0EE19EBDCCA002956F8 /* libz.1.2.5.dylib in Frameworks */,
+				D0A18E5B19D514A90001CFA2 /* UIKit.framework in Frameworks */,
+				D0A18E5719D514A90001CFA2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9C8132BC1C9A5FB300635E31 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				9C8132BD1C9A5FB300635E31 /* JSON.h */,
+				9C8132BE1C9A5FB300635E31 /* NSObject+SBJSON.h */,
+				9C8132BF1C9A5FB300635E31 /* NSObject+SBJSON.m */,
+				9C8132C01C9A5FB300635E31 /* NSString+SBJSON.h */,
+				9C8132C11C9A5FB300635E31 /* NSString+SBJSON.m */,
+				9C8132C21C9A5FB300635E31 /* SBJSON.h */,
+				9C8132C31C9A5FB300635E31 /* SBJSON.m */,
+				9C8132C41C9A5FB300635E31 /* SBJsonBase.h */,
+				9C8132C51C9A5FB300635E31 /* SBJsonBase.m */,
+				9C8132C61C9A5FB300635E31 /* SBJsonParser.h */,
+				9C8132C71C9A5FB300635E31 /* SBJsonParser.m */,
+				9C8132C81C9A5FB300635E31 /* SBJsonWriter.h */,
+				9C8132C91C9A5FB300635E31 /* SBJsonWriter.m */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		CC7387881D48A117002732B2 /* BQMM_SDK */ = {
+			isa = PBXGroup;
+			children = (
+				CC7387891D48A117002732B2 /* BQMM */,
+				CC73878C1D48A117002732B2 /* BQMM_EXT */,
+			);
+			path = BQMM_SDK;
+			sourceTree = "<group>";
+		};
+		CC7387891D48A117002732B2 /* BQMM */ = {
+			isa = PBXGroup;
+			children = (
+				CC73878A1D48A117002732B2 /* BQMM.bundle */,
+				CC73878B1D48A117002732B2 /* BQMM.framework */,
+			);
+			path = BQMM;
+			sourceTree = "<group>";
+		};
+		CC73878C1D48A117002732B2 /* BQMM_EXT */ = {
+			isa = PBXGroup;
+			children = (
+				CC73878D1D48A117002732B2 /* MMTextAttachment.h */,
+				CC73878E1D48A117002732B2 /* MMTextAttachment.m */,
+				CC73878F1D48A117002732B2 /* MMTextParser.h */,
+				CC7387901D48A117002732B2 /* MMTextParser.m */,
+				CC7387911D48A117002732B2 /* MMTextView.h */,
+				CC7387921D48A117002732B2 /* MMTextView.m */,
+			);
+			path = BQMM_EXT;
+			sourceTree = "<group>";
+		};
+		CCB266371D2BA4DE00983385 /* Bugly */ = {
+			isa = PBXGroup;
+			children = (
+				CCB266381D2BA4DE00983385 /* Bugly.framework */,
+			);
+			path = Bugly;
+			sourceTree = "<group>";
+		};
+		D069F4D81A19A4C400CBDA8A /* GotyeAPI */ = {
+			isa = PBXGroup;
+			children = (
+				4D46FF891C97A438001A7AD7 /* GotyeOCAPI.h */,
+				4D46FF8A1C97A438001A7AD7 /* GotyeOCChatTarget.h */,
+				4D46FF8B1C97A438001A7AD7 /* GotyeOCDeleget.h */,
+				4D46FF8C1C97A438001A7AD7 /* GotyeOCGroupMsgConfig.h */,
+				4D46FF8D1C97A438001A7AD7 /* GotyeOCMedia.h */,
+				4D46FF8E1C97A438001A7AD7 /* GotyeOCMessage.h */,
+				4D46FF8F1C97A438001A7AD7 /* GotyeOCNotify.h */,
+				4D46FF901C97A438001A7AD7 /* GotyeOCStatusCode.h */,
+				4D46FF911C97A438001A7AD7 /* libgotyeapi.a */,
+			);
+			path = GotyeAPI;
+			sourceTree = "<group>";
+		};
+		D0A18E4A19D514A90001CFA2 = {
+			isa = PBXGroup;
+			children = (
+				D0A18E5C19D514A90001CFA2 /* GotyeIM */,
+				D0A18E5519D514A90001CFA2 /* Frameworks */,
+				D0A18E5419D514A90001CFA2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D0A18E5419D514A90001CFA2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D0A18E5319D514A90001CFA2 /* GotyeIM.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D0A18E5519D514A90001CFA2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				430E73AB1C00569200363677 /* AddressBook.framework */,
+				43C5CB3D1BF9C8EF00C4A407 /* CoreData.framework */,
+				43C5CB3B1BF9C8E800C4A407 /* GLKit.framework */,
+				43C5CB361BF9C3B300C4A407 /* Security.framework */,
+				437B3F2F1BB3FBA700A9CE91 /* MobileCoreServices.framework */,
+				437B3F2C1BB3FB9300A9CE91 /* CFNetwork.framework */,
+				43CB31401AFB327E00FFD63D /* CoreTelephony.framework */,
+				43CB313B1AFB322200FFD63D /* iflyMSC.framework */,
+				436F0AD71AF76136008B38DF /* libgotyeapi.a */,
+				436F0A851AF0F3A9008B38DF /* liblibv2t.a */,
+				432393051AB5DC5F000AE474 /* libgotyeapi.a */,
+				432392C11AB5D473000AE474 /* libgotyeapi.a */,
+				D0EC51471A3FFEAE00A637C4 /* libstdc++.dylib */,
+				D0D579A21A36E08D00AE4F1F /* SystemConfiguration.framework */,
+				D0D579A01A36E06900AE4F1F /* AVFoundation.framework */,
+				D0A3B0ED19EBDCCA002956F8 /* libz.1.2.5.dylib */,
+				D0A3B0EB19EBDCAA002956F8 /* AudioToolbox.framework */,
+				D0A3B0E919EBA49E002956F8 /* libstdc++.6.0.9.dylib */,
+				D0A18E5619D514A90001CFA2 /* Foundation.framework */,
+				D0A18E5819D514A90001CFA2 /* CoreGraphics.framework */,
+				D0A18E5A19D514A90001CFA2 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D0A18E5C19D514A90001CFA2 /* GotyeIM */ = {
+			isa = PBXGroup;
+			children = (
+				D0A18E6519D514A90001CFA2 /* GotyeAppDelegate.h */,
+				43DABD871ACA3BA600F84650 /* GotyeAppDelegate.mm */,
+				D0D3367719D7A4DA00FC4CF3 /* GotyeUIUtil.h */,
+				D0D3367819D7A4DA00FC4CF3 /* GotyeUIUtil.m */,
+				D0BC96DB19FA34F500F23017 /* GotyeSettingManager.h */,
+				D0BC96DC19FA34F500F23017 /* GotyeSettingManager.m */,
+				D0D69E461A8CA7FA0036839A /* XCode6Patch.mm */,
+				D0D3368919D7B92100FC4CF3 /* UI */,
+				D069F4D81A19A4C400CBDA8A /* GotyeAPI */,
+				9C8132BC1C9A5FB300635E31 /* JSON */,
+				D0A18E6819D514A90001CFA2 /* Images.xcassets */,
+				CC7387881D48A117002732B2 /* BQMM_SDK */,
+				CCB266371D2BA4DE00983385 /* Bugly */,
+				D0A18E5D19D514A90001CFA2 /* Supporting Files */,
+			);
+			path = GotyeIM;
+			sourceTree = "<group>";
+		};
+		D0A18E5D19D514A90001CFA2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D0A18E5E19D514A90001CFA2 /* GotyeIM-Info.plist */,
+				D0A18E5F19D514A90001CFA2 /* InfoPlist.strings */,
+				D0A18E6419D514A90001CFA2 /* GotyeIM-Prefix.pch */,
+				D0A18E6219D514A90001CFA2 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D0A3B0D319EB98CA002956F8 /* ChatView */ = {
+			isa = PBXGroup;
+			children = (
+				D0E2EAB119F0B902001A653E /* GotyeChatBubbleView.h */,
+				D0E2EAB219F0B902001A653E /* GotyeChatBubbleView.m */,
+				D0C0C64419EF74D700138544 /* GotyeChatViewController.h */,
+				D0C0C64519EF74D700138544 /* GotyeChatViewController.m */,
+				4DD6EA4C1BD776DB0056DC4D /* GotyeChatTableViewCell.h */,
+				4DD6EA4D1BD776DB0056DC4D /* GotyeChatTableViewCell.m */,
+				D0C0C64619EF74D700138544 /* GotyeChatViewController.xib */,
+				D07F500219F632AB008DBBE3 /* GotyeRealTimeVoiceController.h */,
+				D07F500319F632AB008DBBE3 /* GotyeRealTimeVoiceController.m */,
+				D07F500419F632AB008DBBE3 /* GotyeRealTimeVoiceController.xib */,
+				9C8132D01C9ABA7900635E31 /* GotyeInputTextView.h */,
+				9C8132D11C9ABA7900635E31 /* GotyeInputTextView.m */,
+			);
+			path = ChatView;
+			sourceTree = "<group>";
+		};
+		D0C9E03019D92F8600573396 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				D0C9E03119D9360A00573396 /* ContextMenuTableView */,
+				D0A4511E1A00BF4E00E70359 /* GotyeSearchBar.h */,
+				D0A4511F1A00BF4E00E70359 /* GotyeSearchBar.m */,
+				D0A451231A00D0CF00E70359 /* GotyeSearchBar.xib */,
+				D0BF21381A03563A0041AAAA /* GotyeLoadingView.h */,
+				D0BF21391A03563A0041AAAA /* GotyeLoadingView.m */,
+				D0BF213F1A0356590041AAAA /* GotyeLoadingView.xib */,
+				D0C2B3BD1A0A127D002D40A5 /* MBProgressHUD.h */,
+				D0C2B3BE1A0A127D002D40A5 /* MBProgressHUD.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		D0C9E03119D9360A00573396 /* ContextMenuTableView */ = {
+			isa = PBXGroup;
+			children = (
+				D0C9E03B19D943E000573396 /* GotyeContextMenuTableViewController.h */,
+				D0C9E03C19D943E000573396 /* GotyeContextMenuTableViewController.m */,
+				D0C9E03519D9365D00573396 /* GotyeOverlayView.h */,
+				D0C9E03619D9365D00573396 /* GotyeOverlayView.m */,
+				D0C9E03819D9373F00573396 /* GotyeContextMenuCell.h */,
+				D0C9E03919D9373F00573396 /* GotyeContextMenuCell.m */,
+			);
+			path = ContextMenuTableView;
+			sourceTree = "<group>";
+		};
+		D0C9E04E19D95E2B00573396 /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				D0C9E05919D965C000573396 /* GotyeAddFriendController.h */,
+				D0C9E05A19D965C000573396 /* GotyeAddFriendController.m */,
+				D0A4E27619FB95B8007D14C2 /* GotyeAddFriendCell.xib */,
+				D0BDC4CC19E68889001A0AEA /* GotyeChatRoomListController.h */,
+				D0BDC4CD19E68889001A0AEA /* GotyeChatRoomListController.m */,
+				D0BC96DF19FA4C1600F23017 /* GotyeChatRoomSettingController.h */,
+				D0BC96E019FA4C1600F23017 /* GotyeChatRoomSettingController.m */,
+				D0BDC4C219E639F8001A0AEA /* GotyeGroupCreateController.h */,
+				D0BDC4C319E639F8001A0AEA /* GotyeGroupCreateController.m */,
+				D0BDC4C419E639F8001A0AEA /* GotyeGroupCreateController.xib */,
+				D0BDC4C719E67AB2001A0AEA /* GotyeGroupSelUserController.h */,
+				D0BDC4C819E67AB2001A0AEA /* GotyeGroupSelUserController.m */,
+				D0BDC4CF19E68D82001A0AEA /* GotyeGroupListController.h */,
+				D0BDC4D019E68D82001A0AEA /* GotyeGroupListController.m */,
+				D0A4511B1A00BC0600E70359 /* GotyeGroupSearchController.h */,
+				D0A4511C1A00BC0600E70359 /* GotyeGroupSearchController.m */,
+				D0A595E01A14A3B10091AD65 /* GotyeGroupSearchCell.xib */,
+				D0EE774919F8DEB000879F91 /* GotyeGroupSettingController.h */,
+				D0EE774A19F8DEB000879F91 /* GotyeGroupSettingController.m */,
+				D0EE774619F8DEB000879F91 /* GotyeGroupDismissController.h */,
+				D0EE774719F8DEB000879F91 /* GotyeGroupDismissController.m */,
+				D0EE774819F8DEB000879F91 /* GotyeGroupDismissController.xib */,
+				D0EE774E19F8F58D00879F91 /* GotyeUserInfoController.h */,
+				D0EE774F19F8F58D00879F91 /* GotyeUserInfoController.m */,
+				D0EE775019F8F58D00879F91 /* GotyeUserInfoController.xib */,
+				D0C9E04F19D95E2B00573396 /* GotyeNotifyController.h */,
+				D0C9E05019D95E2B00573396 /* GotyeNotifyController.m */,
+				D0C9E05619D95F4500573396 /* GotyeNotifyCell.xib */,
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
+		D0D3368919D7B92100FC4CF3 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				D0D3368A19D7B92100FC4CF3 /* MainTabView */,
+				D0C9E04E19D95E2B00573396 /* SubView */,
+				D0A3B0D319EB98CA002956F8 /* ChatView */,
+				D0C9E03019D92F8600573396 /* Common */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		D0D3368A19D7B92100FC4CF3 /* MainTabView */ = {
+			isa = PBXGroup;
+			children = (
+				D0A3B0D419EB9DAE002956F8 /* GotyeLoginController.h */,
+				D0A3B0D519EB9DAE002956F8 /* GotyeLoginController.mm */,
+				D0A3B0D619EB9DAE002956F8 /* GotyeLoginController.xib */,
+				D0D3368E19D7B92100FC4CF3 /* GotyeTabViewController.h */,
+				D0D3368F19D7B92100FC4CF3 /* GotyeTabViewController.m */,
+				D0C9E04319D945AB00573396 /* GotyeMessageViewController.h */,
+				D0C9E04419D945AB00573396 /* GotyeMessageViewController.m */,
+				D0C9E04519D945AB00573396 /* GotyeMessageViewController.xib */,
+				D0BA650019D7F544003F599C /* GotyeMessageCell.xib */,
+				D0D3369519D7D38200FC4CF3 /* GotyeContactViewController.h */,
+				D0D3369619D7D38200FC4CF3 /* GotyeContactViewController.m */,
+				D0D3369719D7D38200FC4CF3 /* GotyeContactViewController.xib */,
+				D073553E19E5354100A64FCC /* GotyeContactCell.xib */,
+				D0BA64F919D7E07A003F599C /* GotyeSettingViewController.h */,
+				D0BA64FA19D7E07A003F599C /* GotyeSettingViewController.m */,
+				D0BDC4D219E694F7001A0AEA /* GotyeSettingViewController.xib */,
+			);
+			path = MainTabView;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D0A18E5219D514A90001CFA2 /* GotyeIM */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D0A18E7F19D514A90001CFA2 /* Build configuration list for PBXNativeTarget "GotyeIM" */;
+			buildPhases = (
+				D0A18E4F19D514A90001CFA2 /* Sources */,
+				D0A18E5019D514A90001CFA2 /* Frameworks */,
+				D0A18E5119D514A90001CFA2 /* Resources */,
+				CCB2663A1D2BA4FA00983385 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GotyeIM;
+			productName = GotyeIM;
+			productReference = D0A18E5319D514A90001CFA2 /* GotyeIM.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D0A18E4B19D514A90001CFA2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = Gotye;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = Gotye;
+				TargetAttributes = {
+					D0A18E5219D514A90001CFA2 = {
+						DevelopmentTeam = HY2JF7VN6E;
+					};
+				};
+			};
+			buildConfigurationList = D0A18E4E19D514A90001CFA2 /* Build configuration list for PBXProject "GotyeIM" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D0A18E4A19D514A90001CFA2;
+			productRefGroup = D0A18E5419D514A90001CFA2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D0A18E5219D514A90001CFA2 /* GotyeIM */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D0A18E5119D514A90001CFA2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0A4E27819FB95B8007D14C2 /* GotyeAddFriendCell.xib in Resources */,
+				D0D3369919D7D38200FC4CF3 /* GotyeContactViewController.xib in Resources */,
+				D0EE774C19F8DEB000879F91 /* GotyeGroupDismissController.xib in Resources */,
+				D073554019E5354100A64FCC /* GotyeContactCell.xib in Resources */,
+				D0BF21401A0356590041AAAA /* GotyeLoadingView.xib in Resources */,
+				D0A3B0D819EB9DAE002956F8 /* GotyeLoginController.xib in Resources */,
+				D0C0C64819EF74D700138544 /* GotyeChatViewController.xib in Resources */,
+				D0A451241A00D0CF00E70359 /* GotyeSearchBar.xib in Resources */,
+				D0BA650219D7F544003F599C /* GotyeMessageCell.xib in Resources */,
+				D0BDC4C619E639F8001A0AEA /* GotyeGroupCreateController.xib in Resources */,
+				D0A595E21A14A3B10091AD65 /* GotyeGroupSearchCell.xib in Resources */,
+				D0A18E6119D514A90001CFA2 /* InfoPlist.strings in Resources */,
+				D0EE775219F8F58D00879F91 /* GotyeUserInfoController.xib in Resources */,
+				D0C9E04719D945AB00573396 /* GotyeMessageViewController.xib in Resources */,
+				D0BDC4D319E694F7001A0AEA /* GotyeSettingViewController.xib in Resources */,
+				D0A18E6919D514A90001CFA2 /* Images.xcassets in Resources */,
+				D0C9E05819D95F4500573396 /* GotyeNotifyCell.xib in Resources */,
+				D07F500619F632AB008DBBE3 /* GotyeRealTimeVoiceController.xib in Resources */,
+				CC7387931D48A117002732B2 /* BQMM.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CCB2663A1D2BA4FA00983385 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/sh\n# Copyright 2014-2015 Bugly @Tencent. All rights reserved.\n#\n# V 1.1\n#\n################################################################################\n# 注意: 请配置下面的信息\n################################################################################\nBUGLY_APP_ID=\"900038006\"\nBUGLY_APP_KEY=\"FyatlI5fezCpxtkX\"\nBUNDLE_IDENTIFIER=\"com.gotye.api.ios.im\"\n################################################################################\n# 自定义配置\n################################################################################\n# Debug模式编译是否上传，1＝上传 0＝不上传，默认不上传\nUPLOAD_DEBUG_SYMBOLS=1\n#\n# 模拟器编译是否上传，1=上传 0=不上传，默认不上传\nUPLOAD_SIMULATOR_SYMBOLS=0\n#\n# # 脚本默认配置的版本格式为CFBundleShortVersionString(CFBundleVersion),  如果你修改默认的版本格式, 请设置此变量, 如果不想修改, 请忽略此设置\n# CUSTOMIZED_APP_VERSION=\"\"\n#\n#\n#\n# This script will extract symbols from the .dSYM and generate .symbol file(Bugly supported) and upload to server.\n# You could visit http://bugly.qq.com to get more details about Bugly.\n#\n# Usage:\n#   * The instructions assume you have copyed this script into your project int Xcode.\n#   * Copy the \"buglySymbolIOS.jar\" file into the \"~/bin\" folder.\n#   * Open the project editor, select your build target.\n#   * Click \"Build Phases\" at the top of the project editor.\n#   * Click \"+\" button in the top left corner and select \"New Run Script Phase\".\n#   * Click \"Run Script\".\n#   * Paste the following script into the dark text box. You will have to uncomment the lines (remove the #) of course.\n#\n# --- SCRIPT BEGINS ON NEXT LINE, COPY AND EDIT FROM THERE ---\n#\n#\n#\n# --- END OF SCRIPT ---\n\n\n################################################################################\n# 注意: 如果你不知道此脚本的执行流程和用法，请不要随便修改！\n################################################################################\n\n# 退出执行并打印提示信息\nexitWithMessage() {\n    echo \"--------------------------------\"\n    echo -e \"${1}\"\n    echo \"--------------------------------\"\n    echo \"No upload and exit.\"\n    echo \"----------------------------------------------------------------\"\n    exit ${2}\n}\n\necho \"----------------------------------------------------------------\"\necho \"Copyright 2014-2015 Bugly @Tencent. All rights reserved.\"\n\necho \"This script will extract symbols from the .dSYM file and generate .symbol file(Bugly supported) and upload to server.\"\necho \"You could visit http://bugly.qq.com to get more details about Bugly.\"\necho \"----------------------------------------------------------------\"\n\necho \"Uploading dSYM to Bugly.\"\necho \"\"\n\n# Bugly服务域名\nDSYM_UPLOAD_DOMAIN=\"bugly.qq.com\"\n\n# 读取Info.plist文件中的版本信息\necho \"Info.Plist : ${INFOPLIST_FILE}\"\n\nBUNDLE_VERSION=$(/usr/libexec/PlistBuddy -c 'Print CFBundleVersion' \"${INFOPLIST_FILE}\")\nBUNDLE_SHORT_VERSION=$(/usr/libexec/PlistBuddy -c 'Print CFBundleShortVersionString' \"${INFOPLIST_FILE}\")\n\n# 组装Bugly默认识别的版本信息(格式为CFBundleShortVersionString(CFBundleVersion), 例如: 1.0(1))\nif [ ! \"${CUSTOMIZED_APP_VERSION}\" ]; then\nBUGLY_APP_VERSION=\"${BUNDLE_SHORT_VERSION}(${BUNDLE_VERSION})\"\nelse\nBUGLY_APP_VERSION=\"${CUSTOMIZED_APP_VERSION}\"\nfi\n\n# Bugly符号提取工具路径, 请确保buglySymboliOS.jar的路径是正确的\nBUGLY_SYMBOL_JAR_PATH=\"${SRCROOT}/dsymtool/buglySymboliOS.jar\"\nif [ ! -f \"${BUGLY_SYMBOL_JAR_PATH}\" ]; then\nBUGLY_SYMBOL_JAR_PATH=\"$HOME/bin/buglySymboliOS.jar\"\nfi\n\necho \"--------------------------------\"\necho \"Step 1: Prepare application information.\"\necho \"--------------------------------\"\n\necho \"Product Name: ${PRODUCT_NAME}\"\necho \"Bundle Identifier: ${BUNDLE_IDENTIFIER}\"\necho \"Version: ${BUNDLE_SHORT_VERSION}\"\necho \"Build: ${BUNDLE_VERSION}\"\n\necho \"Bugly App ID: ${BUGLY_APP_ID}\"\necho \"Bugly App key: ${BUGLY_APP_KEY}\"\necho \"Bugly App Version: ${BUGLY_APP_VERSION}\"\n\necho \"--------------------------------\"\necho \"Step 2: Check the arguments ...\"\n\n##检查模拟器编译是否允许上传符号\nif [ \"$EFFECTIVE_PLATFORM_NAME\" == \"-iphonesimulator\" ]; then\nif [ $UPLOAD_SIMULATOR_SYMBOLS -eq 0 ]; then\nexitWithMessage \"Warning: Build for simulator and skipping to upload. \\nYou can modify 'UPLOAD_SIMULATOR_SYMBOLS' to 1 in the script.\" 0\nfi\nfi\n\n##检查是否是Release模式编译\nif [ \"${CONFIGURATION=}\" == \"Debug\" ]; then\nif [ $UPLOAD_DEBUG_SYMBOLS -eq 0 ]; then\nexitWithMessage \"Warning: Build for debug mode and skipping to upload. \\nYou can modify 'UPLOAD_DEBUG_SYMBOLS' to 1 in the script.\" 0\nfi\nfi\n\n##检查是否Archive操作\nif [ $UPLOAD_ARCHIVE_ONLY -eq 1 ]; then\nif [[ \"$TARGET_BUILD_DIR\" == *\"/Archive\"* ]]; then\necho \"Archive the package\"\nelse\nexitWithMessage \"Warning: Build for NOT Archive mode and skipping to upload. \\nYou can modify 'UPLOAD_ARCHIVE_ONLY' to 0 in the script.\" 0\nfi\nfi\n\n# 检查必须参数是否设置\nif [ ! \"${BUGLY_APP_ID}\" ]; then\nexitWithMessage \"Error: Bugly App ID not defined. Please set 'BUGLY_APP_ID' \" 0\nfi\nif [[ \"${BUGLY_APP_ID}\" == *\"App ID\"* ]]; then\nexitWithMessage \"Error: Bugly App ID not defined.\" 0\nfi\n\nif [ ! \"${BUGLY_APP_KEY}\" ]; then\nexitWithMessage \"Error: Bugly APP Key not defined.\" 0\nfi\n\nif [ ! \"${BUNDLE_IDENTIFIER}\" ]; then\nexitWithMessage \"Error: Bundle Identifier not defined.\" 0\nfi\n\nfunction uploadDSYM {\n    DSYM_SRC=\"$1\"\n    echo \".dSYM file: ${DSYM_SRC}\"\n    if [ ! -d \"$DSYM_SRC\" ]; then\n    exitWithMessage \"dSYM source not found: ${DSYM_SRC}\" 0\n    fi\n    DSYM_FILE_NAME=${DSYM_SRC##*/}\n        DSYM_SYMBOL_OUT_ZIP_NAME=\"${DSYM_FILE_NAME}.bSymbol.zip\"\n        # 替换空格\n        DSYM_SYMBOL_OUT_ZIP_NAME=\"${DSYM_SYMBOL_OUT_ZIP_NAME// /_}\"\n        \n        # 声明符号表临时目录和备份目录\n        DSYM_ZIP_OUT_DIR=${BUILD_DIR}/BuglySymbolsTemp\n        DSYM_SYMBOL_BACKUP_DIR=${BUILD_DIR}/BuglySymbolsBackup\n        \n        if [ ! -e \"${DSYM_ZIP_OUT_DIR}\" ]; then\n        mkdir ${DSYM_ZIP_OUT_DIR}\n        fi\n        \n        if [ ! -e \"${DSYM_SYMBOL_BACKUP_DIR}\" ]; then\n        mkdir ${DSYM_SYMBOL_BACKUP_DIR}\n        fi\n        \n        # 备份并清理\n        find ${DSYM_ZIP_OUT_DIR} -name \"*.bSymbol.zip\" -print0 | xargs -0 -I {} mv {} ${DSYM_SYMBOL_BACKUP_DIR}\n        /bin/rm -rf \"${DSYM_ZIP_OUT_DIR}/*.bSymbol.zip\"\n        \n        DSYM_ZIP_FPATH=\"${DSYM_ZIP_OUT_DIR}/${DSYM_SYMBOL_OUT_ZIP_NAME}\"\n        \n        # 提取符号信息\n        echo \"--------------------------------\"\n        echo \"Step 3: Extract symbol info from .dSYM file. to ${DSYM_ZIP_FPATH}\"\n        \n        if [ ! -f \"$BUGLY_SYMBOL_JAR_PATH\" ]; then\n        exitWithMessage \"Error: Jar file '${BUGLY_SYMBOL_JAR_PATH}' was not found. \\nPlease copy the jar file into ~/bin folder.\" 1\n        fi\n        \n        echo \"--------------------------------\"\n        (/usr/bin/java -jar \"${BUGLY_SYMBOL_JAR_PATH}\" -i \"${DSYM_SRC}\" -o \"${DSYM_ZIP_FPATH}\" ) || exitWithMessage \"Error: Failed to extract symbols.\" 1\n        echo \"--------------------------------\"\n        \n        if [ ! -e \"${DSYM_ZIP_FPATH}\" ]; then\n        DSYM_SYMBOL_OUT_ZIP_NAME=$(ls ${DSYM_ZIP_OUT_DIR} | grep \".bSymbol.zip\")\n        DSYM_ZIP_FPATH=\"${DSYM_ZIP_OUT_DIR}/${DSYM_SYMBOL_OUT_ZIP_NAME}\"\n        DSYM_SYMBOL_OUT_ZIP_NAME=${DSYM_SYMBOL_OUT_ZIP_NAME//&/_}\n            fi\n            \n            if [ ! -e \"${DSYM_ZIP_FPATH}\" ] ; then\n            exitWithMessage \"no symbol file zip archive generated: ${DSYM_ZIP_FPATH}\" 0\n            fi\n            \n            echo \"Step 4: Upload the symbols of dSYM.\"\n            echo \"--------------------------------\"\n            echo \"zip : ${DSYM_SYMBOL_OUT_ZIP_NAME}\"\n            echo \"dir : ${DSYM_ZIP_FPATH}\"\n            \n            echo \"dSYM upload domain: ${DSYM_UPLOAD_DOMAIN}\"\n            DSYM_UPLOAD_URL=\"http://${DSYM_UPLOAD_DOMAIN}/upload/dsym?app=${BUGLY_APP_ID}&pid=2&ver=${BUGLY_APP_VERSION}&n=${DSYM_SYMBOL_OUT_ZIP_NAME}&key=${BUGLY_APP_KEY}&bid=${BUNDLE_IDENTIFIER}\"\n            echo \"dSYM upload url: ${DSYM_UPLOAD_URL}\"\n            \n            # Upload dSYM to Bugly\n            echo \"curl --header \"Content-Type:application/zip\" --data-binary \"@${DSYM_ZIP_FPATH}\" \"${DSYM_UPLOAD_URL}\" --verbose\"\n            \n            echo \"--------------------------------\"\n            STATUS=$(/usr/bin/curl --header \"Content-Type:application/zip\" --data-binary \"@${DSYM_ZIP_FPATH}\" \"${DSYM_UPLOAD_URL}\" --verbose)\n            echo \"--------------------------------\"\n            \n            UPLOAD_RESULT=\"FAILTURE\"\n            echo \"Bugly server response: ${STATUS}\"\n            if [ ! \"${STATUS}\" ]; then\n            echo \"Error: Failed to upload the zip archive file.\"\n            elif [[ \"${STATUS}\" == *\":true\"* ]]; then\n            echo \"Success to upload the dSYM for the app [${BUNDLE_IDENTIFIER} ${BUGLY_APP_VERSION}]\"\n            UPLOAD_RESULT=\"SUCCESS\"\n            else\n            echo \"Error: Failed to upload the zip archive file to Bugly.\"\n            fi\n            \n            #Remove temp dSYM archive\n            echo \"Remove temporary zip archive: ${DSYM_ZIP_FPATH}\"\n            #/bin/rm -f \"${DSYM_ZIP_FPATH}\"\n            \n            if [ \"$?\" -ne 0 ]; then\n            exitWithMessage \"Error: Failed to remove temporary zip archive.\" 0\n            fi\n            \n            echo \"--------------------------------\"\n            echo \"${UPLOAD_RESULT} - dSYM upload complete.\"\n            \n            if [[ \"${UPLOAD_RESULT}\" == \"FAILTURE\" ]]; then\n            echo \"--------------------------------\"\n            echo \"Failed to upload the dSYM\"\n            echo \"Please check the script and try it again.\"\n            fi\n            \n            echo \"----------------------------------------------------------------\"\n        }\n        \n        # .dSYM文件信息\n        \n        DSYM_FOLDER=\"${DWARF_DSYM_FOLDER_PATH}\"\n        IFS=$'\\n'\n        \n        echo \"Scaning dSYM FOLDER: ${DSYM_FOLDER} ...\"\n        RET=\"F\"\n        \n        for dsymFile in $(find \"$DSYM_FOLDER\" -name '*.dSYM'); do\n        RET=\"T\"\n        echo \"Found dSYM file: $dsymFile\"\n        uploadDSYM $dsymFile\n        done\n        \n        if [ $RET = \"F\" ]; then\n        exitWithMessage \"No .dSYM found in ${DSYM_FOLDER}\" 0\n        fi";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D0A18E4F19D514A90001CFA2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC7387971D48A117002732B2 /* MMTextView.m in Sources */,
+				CC7387951D48A117002732B2 /* MMTextAttachment.m in Sources */,
+				D0BA64FC19D7E07A003F599C /* GotyeSettingViewController.m in Sources */,
+				D0C9E03D19D943E000573396 /* GotyeContextMenuTableViewController.m in Sources */,
+				D0C0C64719EF74D700138544 /* GotyeChatViewController.m in Sources */,
+				D0BC96E119FA4C1600F23017 /* GotyeChatRoomSettingController.m in Sources */,
+				D0A3B0D719EB9DAE002956F8 /* GotyeLoginController.mm in Sources */,
+				D0EE774D19F8DEB000879F91 /* GotyeGroupSettingController.m in Sources */,
+				D0D3367919D7A4DA00FC4CF3 /* GotyeUIUtil.m in Sources */,
+				D0A18E6319D514A90001CFA2 /* main.m in Sources */,
+				D0C9E04619D945AB00573396 /* GotyeMessageViewController.m in Sources */,
+				9C8132CC1C9A5FB300635E31 /* SBJSON.m in Sources */,
+				D0D3369319D7B92100FC4CF3 /* GotyeTabViewController.m in Sources */,
+				9C8132CB1C9A5FB300635E31 /* NSString+SBJSON.m in Sources */,
+				D0E2EAB319F0B902001A653E /* GotyeChatBubbleView.m in Sources */,
+				D0BDC4C519E639F8001A0AEA /* GotyeGroupCreateController.m in Sources */,
+				D0EE775119F8F58D00879F91 /* GotyeUserInfoController.m in Sources */,
+				D0C9E05C19D965C000573396 /* GotyeAddFriendController.m in Sources */,
+				D0BDC4CE19E68889001A0AEA /* GotyeChatRoomListController.m in Sources */,
+				4DD6EA4E1BD776DB0056DC4D /* GotyeChatTableViewCell.m in Sources */,
+				D0D3369819D7D38200FC4CF3 /* GotyeContactViewController.m in Sources */,
+				D0BF213A1A03563A0041AAAA /* GotyeLoadingView.m in Sources */,
+				9C8132CF1C9A5FB300635E31 /* SBJsonWriter.m in Sources */,
+				D0BDC4D119E68D82001A0AEA /* GotyeGroupListController.m in Sources */,
+				D07F500519F632AB008DBBE3 /* GotyeRealTimeVoiceController.m in Sources */,
+				D0C9E03A19D9373F00573396 /* GotyeContextMenuCell.m in Sources */,
+				D0C9E03719D9365D00573396 /* GotyeOverlayView.m in Sources */,
+				43DABD881ACA3BA600F84650 /* GotyeAppDelegate.mm in Sources */,
+				9C8132CD1C9A5FB300635E31 /* SBJsonBase.m in Sources */,
+				9C8132CA1C9A5FB300635E31 /* NSObject+SBJSON.m in Sources */,
+				CC7387961D48A117002732B2 /* MMTextParser.m in Sources */,
+				D0A4511D1A00BC0600E70359 /* GotyeGroupSearchController.m in Sources */,
+				9C8132CE1C9A5FB300635E31 /* SBJsonParser.m in Sources */,
+				D0EE774B19F8DEB000879F91 /* GotyeGroupDismissController.m in Sources */,
+				D0C2B3BF1A0A127D002D40A5 /* MBProgressHUD.m in Sources */,
+				D0D69E471A8CA7FA0036839A /* XCode6Patch.mm in Sources */,
+				D0BC96DD19FA34F500F23017 /* GotyeSettingManager.m in Sources */,
+				D0BDC4CA19E67AB2001A0AEA /* GotyeGroupSelUserController.m in Sources */,
+				D0A451201A00BF4E00E70359 /* GotyeSearchBar.m in Sources */,
+				D0C9E05219D95E2B00573396 /* GotyeNotifyController.m in Sources */,
+				9C8132D21C9ABA7900635E31 /* GotyeInputTextView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D0A18E5F19D514A90001CFA2 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D0A18E6019D514A90001CFA2 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D0A18E7D19D514A90001CFA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		D0A18E7E19D514A90001CFA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_BITCODE = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D0A18E8019D514A90001CFA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "libstdc++";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					../../proj.ios/GotyeAPI/GotyeAPI/,
+					/Users/liugan/Documents/work/v3400/proj.ios.v2t/libv2t/libv2t/lib,
+					"$(PROJECT_DIR)/GotyeIM/BQMM_SDK/BQMM",
+					"$(PROJECT_DIR)/GotyeIM/Bugly",
+				);
+				GCC_C_LANGUAGE_STANDARD = c11;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GotyeIM/GotyeIM-Prefix.pch";
+				INFOPLIST_FILE = "GotyeIM/GotyeIM-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/GotyeIM/GotyeAPI";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gotye.api.ios.im;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "armv7 armv7s arm64";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		D0A18E8119D514A90001CFA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "libstdc++";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					../../proj.ios/GotyeAPI/GotyeAPI/,
+					/Users/liugan/Documents/work/v3400/proj.ios.v2t/libv2t/libv2t/lib,
+					"$(PROJECT_DIR)/GotyeIM/BQMM_SDK/BQMM",
+					"$(PROJECT_DIR)/GotyeIM/Bugly",
+				);
+				GCC_C_LANGUAGE_STANDARD = c11;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GotyeIM/GotyeIM-Prefix.pch";
+				INFOPLIST_FILE = "GotyeIM/GotyeIM-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/GotyeIM/GotyeAPI";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gotye.api.ios.im;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "armv7 armv7s arm64";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D0A18E4E19D514A90001CFA2 /* Build configuration list for PBXProject "GotyeIM" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0A18E7D19D514A90001CFA2 /* Debug */,
+				D0A18E7E19D514A90001CFA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D0A18E7F19D514A90001CFA2 /* Build configuration list for PBXNativeTarget "GotyeIM" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0A18E8019D514A90001CFA2 /* Debug */,
+				D0A18E8119D514A90001CFA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D0A18E4B19D514A90001CFA2 /* Project object */;
+}
