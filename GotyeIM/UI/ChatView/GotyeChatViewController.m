@@ -379,12 +379,11 @@ static GotyeChatViewController *chatViewRetainForBDVR = nil;
     UIButton *button = (UIButton *)sender;
     button.selected = !button.selected;
     
-    if (![textInput isFirstResponder]) {
-        [textInput becomeFirstResponder];
-    }
-    
     if (button.isSelected) {
         [[MMEmotionCentre defaultCentre] attachEmotionKeyboardToInput:textInput];
+        if (![textInput isFirstResponder]) {
+            [textInput becomeFirstResponder];
+        }
     } else {
         [[MMEmotionCentre defaultCentre] switchToDefaultKeyboard];
     }
